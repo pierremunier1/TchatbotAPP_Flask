@@ -12,7 +12,7 @@ class Front:
     def ajax():
         user_text = request.form["userText"]
         analyse = Parser(user_text)
-        userQuery = analyse.parsing()
+        userQuery = analyse.parse()
         return jsonify(["userText"])
     
 

@@ -1,7 +1,8 @@
-import re
 import config
-import unicodedata
 
+import re
+import unicodedata
+import requests
 
 
 class Parser:
@@ -24,12 +25,32 @@ class Parser:
         
         #check stopword
         self.analyse = [x for x in self.analyse if x not in config.STOPWORDS]
-        
+
         #to convert the list to string.
         self.analyse = ' '.join(self.analyse)
 
-        
-
         return self.analyse
-        
-        
+
+class GoogleApi:
+
+    def __init__(self,request):
+
+        self.user_request = request
+        self.latitude = float
+        self.longitude = float
+        self.global_address = str
+
+
+    def position(self):
+
+        payload = {'address': self.user_request, 'key' : config.API_KEY}
+        result = requests.get('https://maps.googleapis.com/maps/api/geocode/json', params=payload)
+        google_maps = result.json()
+        status = google_maps['status']
+        if status == 'OK':
+            self.latitude = google_maps['results'][0]['geometry']['location']['lat']
+            self.longitude = google_maps['results'][0]['geometry']['location']['lng']
+            self.global_address = google_maps['results'][0]['formatted_address']
+            return self.latitude, self.longitude, self.global_address
+        elif status =='ZERO_RESULTS':
+            print("adresse non trouvée")

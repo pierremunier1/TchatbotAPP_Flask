@@ -8,27 +8,32 @@
 <body>
 test page web   
 
-<form id="user-text-form">
-    <p>
-    <label for="user-text-form"></label>
-    <input type="text" id="userText" class="input--usertext" name="userText" placeholder="Ajouter">
-    <input type="submit" value="Envoyer">
-    </p>
-</form>
 
+  <div id="map" style="height: 150px;">
 
-<script>
-    let form = document.querySelector("#user-text-form");
+  </div>
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        fetch("/ajax", {
-            method: "POST",
-            body: new FormData(form)
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt38pTyEwRtX7SzKInHy45GxnXF8NkxWo"></script>
+  <script>
 
-        });
-    })
-</script>
+    function initMap() {
+      var myLatLng = {lat: -25.363, lng: 131.044};
 
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: myLatLng
+      });
+
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+      });
+    }
+
+   initMap(); 
+  </script>
+    
 </body>
+
 </html>

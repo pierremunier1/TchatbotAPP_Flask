@@ -1,7 +1,14 @@
-/* Always set the map height explicitly to define the size of the div
- * element that contains the map. */
- 
+
+
+.input-usertext {
+ width: 700px; 
+}
+
+.input-submit {
+  width: 200px;
+}
+
 #map {
-  height: 500px;
+  height: 400px;
   width: 100%;
 }

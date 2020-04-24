@@ -1,6 +1,6 @@
 import pytest
 
-from tchatbotapp.utils import Parser,GoogleApi
+from tchatbotapp.utils import Parser,GoogleApi,WikiApi
 import urllib.request
 
 
@@ -87,3 +87,21 @@ def test_get_errorstatus(monkeypatch):
     monkeypatch.setattr('requests.get', MockNoResults)
     assert direction.position() == None
 ############################################################
+
+def test_get_wiki(monkeypatch):
+
+        """To test a place, "musée d'orsay", with its latitude and longitude, that has a wikipedia page."""
+        story = WikiApi(48.8599614, 2.3265614)
+        results = {'query': {'pages': [{'extract': "Le musée d’Orsay est un musée national inauguré en 1986, situé dans le 7e arrondissement de Paris le long de la rive gauche de la Seine. Il est installé dans l’ancienne gare d'Orsay, construite par Victor Laloux de 1898 à 1900 et réaménagée en musée sur décision du Président de la République Valéry Giscard d'Estaing."}]}}
+        
+        class MockGetWiki:
+
+            def __init__(self):
+
+                pass
+        
+            def mockreturn(request, params):
+                return results
+
+            monkeypatch.setattr(urllib.request, 'urlopen', mockreturn)
+            assert story.get_wiki()[0] == results['query']['pages'][0]['extract']

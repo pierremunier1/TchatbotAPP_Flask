@@ -5,3 +5,14 @@ STOPWORDS = ["a", "abord", "absolument", "afin", "ah", "ai", "aie", "ailleurs", 
 "adresse", "cherche", "recherche", "donner", "donne", "connais", "connaissez", "salut", "grandpy", "bot", "papi", "papy", "stp", "s'il te plait", "bonjour", "bonsoir", "est-ce", "bye", "merci", "trouve", "trouver", "sais", "situe", "situer", "voudrais", "veux", "peux-tu"]
 
 API_KEY = "AIzaSyDt38pTyEwRtX7SzKInHy45GxnXF8NkxWo"
+
+PAYLOAD =  {'action': 'query',
+            'generator': 'geosearch',
+            'ggsradius':50, 
+            'prop': 'extracts', 
+            'explaintext': True, 
+            'exsentences': 2,
+            'exlimit': 1, 
+            'redirects': True, 
+            'format': 'json', 
+            'formatversion': 2}

@@ -6,13 +6,3 @@ STOPWORDS = ["a", "abord", "absolument", "afin", "ah", "ai", "aie", "ailleurs", 
 
 API_KEY = "AIzaSyDt38pTyEwRtX7SzKInHy45GxnXF8NkxWo"
 
-PAYLOAD =  {'action': 'query',
-            'generator': 'geosearch',
-            'ggsradius':50, 
-            'prop': 'extracts', 
-            'explaintext': True, 
-            'exsentences': 2,
-            'exlimit': 1, 
-            'redirects': True, 
-            'format': 'json', 
-            'formatversion': 2}

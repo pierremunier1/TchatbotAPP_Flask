@@ -67,7 +67,6 @@ def test_requestgoogleapi(monkeypatch):
     monkeypatch.setattr('requests.get', MockRequestsGet)  
     assert direction.position() == (48.85837009999999, 2.2944813, "Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France")
 
-##############################################################
 
 def test_get_errorstatus(monkeypatch):
 
@@ -90,18 +89,17 @@ def test_get_errorstatus(monkeypatch):
 
 def test_get_wiki(monkeypatch):
 
-        """To test a place, "musée d'orsay", with its latitude and longitude, that has a wikipedia page."""
-        story = WikiApi(48.8599614, 2.3265614)
-        results = {'query': {'pages': [{'extract': "Le musée d’Orsay est un musée national inauguré en 1986, situé dans le 7e arrondissement de Paris le long de la rive gauche de la Seine. Il est installé dans l’ancienne gare d'Orsay, construite par Victor Laloux de 1898 à 1900 et réaménagée en musée sur décision du Président de la République Valéry Giscard d'Estaing."}]}}
-        
+        """To test a place, "Troyes City", with its latitude and longitude and wikipedia page."""
+
+        position = WikiApi(latitude=48.297419,longitude=4.074263)
+        result = [{'query':{'geosearch':[{'pageid': 6732671}]}},{'query': {'pages': {'6732671': {'extract':"L'unité urbaine de Troyes est une unité urbaine française centrée sur la ville de Troyes, première…"}}}}]
         class MockGetWiki:
-
-            def __init__(self):
-
+            status_code = 200 
+            def __init__(self,url,params):                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                 pass
-        
-            def mockreturn(request, params):
-                return results
+               
+            def json(self):
+                return result.pop(0)
 
-            monkeypatch.setattr(urllib.request, 'urlopen', mockreturn)
-            assert story.get_wiki()[0] == results['query']['pages'][0]['extract']
+        monkeypatch.setattr('requests.get', MockGetWiki)
+        assert position.get_wiki() == "L'unité urbaine de Troyes est une unité urbaine française centrée sur la ville de Troyes, première…"

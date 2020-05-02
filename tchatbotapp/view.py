@@ -4,35 +4,54 @@ from .utils import Parser, GoogleApi ,WikiApi
 
 class Front:
 
+    """class contains all methods to display the data to the front"""
     
     @tchatbotapp.route('/')
     def index():
         return render_template('index.html')
 
    
-    @tchatbotapp.route("/ajax", methods=["POST","GET"])
+    @tchatbotapp.route("/ajax", methods=["POST"])
     def ajax():
+        
+        """analyse the text entered in the user input"""
 
-            if request.method == "POST":
-                usertext = request.form["usertext"]
-                analyse = Parser(usertext)
-                userQuery = analyse.parse()
-                query = GoogleApi(userQuery)
-                userQuery = query.position()
-                # Running the history method to get the wikipedia page for that coordonates.
-                addressCoords = query.position()
-                latitude = addressCoords[0]
-                longitude = addressCoords[1]
-                globalAddress = addressCoords[2]
-                coords = WikiApi(latitude, longitude)
-                wikiExtract = coords.get_wiki()[0]
-                print(wikiExtract)
-                pageid = coords.get_wiki()[1]    
-                return json.dumps({'userText': userQuery, \
-                                    #'addressAnswer': addressAnswer, \
-                                    'lat':latitude, \
-                                    'lng':longitude, \
-                                    'globalAddress':globalAddress, \
-                                    #'storyAnswer': storyAnswer, \
-                                    'wikiExtract': wikiExtract, \
-                                    'pageid': pageid})
+        request.method == "POST"
+        usertext = request.form["usertext"]
+        analyse = Parser(usertext)
+        userQuery = analyse.parse()
+        query = GoogleApi(userQuery)
+        userQuery = query.position()
+
+        try:
+
+            # retrieve position and global adress from googleapi.
+            addressCoords = query.position() 
+            #print(addressCoords)
+            latitude = addressCoords[0] 
+            longitude = addressCoords[1]
+            globalAddress = addressCoords[2]
+            # send position to wiki api
+            coords = WikiApi(latitude, longitude)
+            extract = coords.get_wiki()
+
+        except:
+
+            # if no message do an different answer.
+        
+            latitude = ''
+            longitude = ''
+            globalAddress = ''
+            extract = ''
+            url = ''
+
+            print("Aucune réponse")
+
+        finally:
+
+            # return complete response to the ajax function.
+           
+            return jsonify({'lat':latitude, 
+                            'lng':longitude,
+                            'globalAddress':globalAddress,
+                            'extract': extract})

@@ -1,17 +1,23 @@
-import config
-
 import re
 import unicodedata
 import requests
+from random import choice
+
+import config
 
 
 class Parser:
 
+    """class contains method to parse the user text input form"""
+
     def __init__(self,analyse):
+        """initialising attribute"""
 
         self.analyse = analyse
         
     def parse(self):
+
+        """method analyse the text and transform if necessary"""
 
         """transformation method"""
         #switch to lower case
@@ -33,7 +39,11 @@ class Parser:
 
 class GoogleApi:
 
+    """classe contains method for geocoding api"""
+
     def __init__(self,userQuery):
+
+        """initializing instance attributes"""
 
         self.user_query = userQuery
         self.latitude = float
@@ -43,10 +53,13 @@ class GoogleApi:
 
     def position(self):
 
+        """method find the correct position with geocoding google api"""
+
         payload = {'address': self.user_query, 'key' : config.API_KEY}
         result = requests.get('https://maps.googleapis.com/maps/api/geocode/json', params=payload)
         google_maps = result.json()
         status = google_maps['status']
+
         if status == 'OK':
             self.latitude = google_maps['results'][0]['geometry']['location']['lat']
             self.longitude = google_maps['results'][0]['geometry']['location']['lng']
@@ -54,37 +67,54 @@ class GoogleApi:
             return self.latitude, self.longitude, self.global_address
         
         elif status =='ZERO_RESULTS':
-            print("adresse non trouvée")
+            print("Adresse non trouvée")
 
 class WikiApi:
 
+    """class contain all methods to retreive data from mediawiki api"""
+
     def __init__(self,latitude, longitude):
-        """ Initializer / Instance Attributes """
+
+        """ Initializing instance attribute """
+
         self.latitude = latitude
         self.longitude = longitude
 
     def get_wiki(self):
 
-        geo = '{}|{}'.format(self.latitude, self.longitude)
-        payload = {'action': 'query',
-                   'generator': 'geosearch',
-                   'ggsradius':50, 
-                    'ggscoord': geo, 
-                    'prop': 'extracts',
-                    'explaintext': True,
-                    'exsentences': 2, 
-                    'exlimit': 1,
-                    'redirects': True, 
-                    'format': 'json', 
-                    'formatversion': 2}
+        """get wikipedia articles from mediawiki api in two step"""
 
-        response = requests.get('https://fr.wikipedia.org/w/api.php', params=payload)
-        media_wiki = response.json()
-        try:
-            # Return the first two sentences of the intro in the extracts,
-            # in plain text, of the place with that coordinates (see payload).
-            first_2_sentences = media_wiki['query']['pages'][0]['extract']
-            pageid = media_wiki['query']['pages'][0]['pageid']
-            return first_2_sentences, pageid
-        except KeyError:
-            pass
+        geo = '{}|{}'.format(self.latitude, self.longitude)
+
+        payload = {'format': 'json', 
+                   'action': 'query',
+                   'list': 'geosearch',
+                   'gsradius':50, 
+                   'gscoord': geo}
+
+        result = requests.get('https://fr.wikipedia.org/w/api.php', params=payload)
+
+        #second step if statut code is ok, retreive all details of the selected articles
+
+        if result.status_code == 200:
+            media_wiki = result.json()
+            print(media_wiki)
+
+            pageid = media_wiki['query']['geosearch'][0]['pageid']
+
+    
+            payload = {'format': 'json', 
+                        'action': 'query',
+                        'prop': 'extracts|info',
+                        'inprop': 'url',
+                        'exchars': 90, 
+                        'explaintext': 1, 
+                        'pageids': pageid} 
+
+            result = requests.get('https://fr.wikipedia.org/w/api.php', params=payload)
+
+            extract_wiki = result.json()
+
+            print(extract_wiki)
+
+            return extract_wiki['query']['pages'][str(pageid)]['extract']

@@ -2,19 +2,23 @@
 
 function initMap() {
 
+  var marker;
 
       googlemap = new google.maps.Map(document.getElementById('map'), {
         zoom: 17,
         center:{lat: 48.853, lng: 2.3488}
-        
+    });
+
+      marker = new google.maps.Marker({
+        position: query,
+        map: googlemap,
+        title: 'Hello World!'
     });
 
     }
 
-
 function inputForm() {  
-  
-  
+
   var query;
 
   form = document.querySelector("#usertext-form");
@@ -30,26 +34,15 @@ function inputForm() {
       .then(json => query={lat:json['lat'],
                            lng:json['lng'],
                            extract:json['extract']})
-                           
-                            
                           
       .then(function(addElement) {
             // crée un nouvel élément div
             var newDiv = document.createElement('wiki');
-
             newDiv.innerHTML = query['extract'];
             googlemap.setCenter(query);
-            marker = new google.maps.Marker({
-            position: query,
-            map: googlemap,
-            animation: google.maps.Animation.DROP,
-              icon: { 
-                path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-                scale: 6
-              }
-            }),
+            marker.setPosition(query);
             document.body.appendChild(newDiv);
-            } )
+            })
 
             });
             }

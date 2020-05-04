@@ -106,7 +106,7 @@ class WikiApi:
                         'action': 'query',
                         'prop': 'extracts|info',
                         'inprop': 'url',
-                        'exchars': 90, 
+                        'exchars': 900, 
                         'explaintext': 1, 
                         'pageids': pageid} 
 

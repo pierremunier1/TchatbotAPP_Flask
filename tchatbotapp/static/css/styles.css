@@ -9,6 +9,13 @@
 }
 
 #map {
-  height: 400px;
-  width: 100%;
+  height: 500px;
+  width: 500px;
+}
+
+#wiki {
+
+  width: 200px;
+  height: 200px;
+  border: blue;
 }

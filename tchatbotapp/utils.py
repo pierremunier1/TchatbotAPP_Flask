@@ -98,8 +98,7 @@ class WikiApi:
 
         if result.status_code == 200:
             media_wiki = result.json()
-            print(media_wiki)
-
+            
             pageid = media_wiki['query']['geosearch'][0]['pageid']
 
     
@@ -114,7 +113,5 @@ class WikiApi:
             result = requests.get('https://fr.wikipedia.org/w/api.php', params=payload)
 
             extract_wiki = result.json()
-
-            print(extract_wiki)
 
             return extract_wiki['query']['pages'][str(pageid)]['extract']

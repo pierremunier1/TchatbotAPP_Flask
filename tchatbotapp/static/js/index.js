@@ -1,39 +1,56 @@
-var pos;
-      
+
+
+function initMap() {
+
+
+      googlemap = new google.maps.Map(document.getElementById('map'), {
+        zoom: 17,
+        center:{lat: 48.853, lng: 2.3488}
+        
+    });
+
+    }
+
 
 function inputForm() {  
+  
+  
+  var query;
 
   form = document.querySelector("#usertext-form");
 
   form.addEventListener("submit", function(event) {
       event.preventDefault();
-      console.log("ok");
 
-      
       fetch("/ajax", {
         method:"POST",
         body: new FormData(form)
       })
       .then(response => response.json())
-      .then(data => pos = data)
-      .then(() => console.log(pos))
-      .then((json) => console.log('this is the json data', json))
-      .catch(error => console.log(error))
-});
-}
+      .then(json => query={lat:json['lat'],
+                           lng:json['lng'],
+                           extract:json['extract']})
+                           
+                            
+                          
+      .then(function(addElement) {
+            // crée un nouvel élément div
+            var newDiv = document.createElement('wiki');
 
+            newDiv.innerHTML = query['extract'];
+            googlemap.setCenter(query);
+            marker = new google.maps.Marker({
+            position: query,
+            map: googlemap,
+            animation: google.maps.Animation.DROP,
+              icon: { 
+                path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                scale: 6
+              }
+            }),
+            document.body.appendChild(newDiv);
+            } )
 
-function initMap() {
-    var myLatLng = {lat: -25.363, lng: 131.044};
+            });
+            }
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: myLatLng
-    });
-
-    var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: 'Hello World!'
-    });
-    }

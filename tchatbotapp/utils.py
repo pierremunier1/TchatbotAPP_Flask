@@ -69,6 +69,9 @@ class GoogleApi:
         elif status =='ZERO_RESULTS':
             print("Adresse non trouvée")
 
+
+
+
 class WikiApi:
 
     """class contain all methods to retreive data from mediawiki api"""
@@ -106,7 +109,7 @@ class WikiApi:
                         'action': 'query',
                         'prop': 'extracts|info',
                         'inprop': 'url',
-                        'exchars': 900, 
+                        'exchars': 200, 
                         'explaintext': 1, 
                         'pageids': pageid} 
 
@@ -115,3 +118,14 @@ class WikiApi:
             extract_wiki = result.json()
 
             return extract_wiki['query']['pages'][str(pageid)]['extract']
+
+class Grandpy:
+
+    
+    def reply():
+
+        listanswer = ("test","response")
+
+        answer = choice(listanswer)
+        print(answer)
+        return answer

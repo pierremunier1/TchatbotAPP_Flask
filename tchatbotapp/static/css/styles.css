@@ -13,9 +13,20 @@
   width: 500px;
 }
 
-#wiki {
+.wiki-class {
 
-  width: 200px;
-  height: 200px;
-  border: blue;
+  color: black;
+  text-align : center;
+  margin:2px;
+}
+
+#wiki_1{
+
+  width: 300px;
+  height: 500px;
+  border : 1px solid black;
+  position: relative; 
+  top: -500px;
+  left: 700px;
+  
 }

@@ -36,9 +36,6 @@ class Front:
             extract = coords.get_wiki()
             response = Grandpy.reply()
         
-           
-            
-
         except:
 
             # if no message do an different answer.
@@ -47,20 +44,18 @@ class Front:
             longitude = ''
             globalAddress = ''
             extract = ''
-            response = ''
-            
-            
+            response = Grandpy.reply_noanswer()
 
             print("Aucune réponse")
 
-        finally:
+       
 
             # return complete response to the ajax function.
         
-            return jsonify({'lat':latitude, 
-                            'lng':longitude,
-                            'globalAddress':globalAddress,
-                            'extract': extract,
-                            'response':response})
+        return jsonify({'lat':latitude, 
+                        'lng':longitude,
+                        'globalAddress':globalAddress,
+                        'extract': extract,
+                        'response':response})
                             
                             

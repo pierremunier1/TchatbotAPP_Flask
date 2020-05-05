@@ -43,7 +43,7 @@ function inputForm() {
             // crée un nouvel élément div
             
             var newDiv = document.createElement('wiki');
-            newDiv.innerHTML = query['extract'];
+            newDiv.innerHTML = query['response'] + query['extract'] ;
             googlemap.setCenter(query);
             marker.setPosition(query);
             newDiv.className = 'wiki-class';

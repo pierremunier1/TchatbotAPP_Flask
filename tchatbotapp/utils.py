@@ -124,8 +124,15 @@ class Grandpy:
     
     def reply():
 
-        listanswer = ("test","response")
+        listanswer = ("Je connais très bien ce lieu....   ","Je vais te raconter l'histoire...    ")
 
         answer = choice(listanswer)
         print(answer)
         return answer
+
+    def reply_noanswer():
+
+        listanswer = ("Je n'ai pas compris peux tu répeter la question?....       ","As-tu un problème de clavier?...    ")
+
+        noanswer = choice(listanswer)
+        return noanswer

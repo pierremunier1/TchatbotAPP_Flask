@@ -19,6 +19,21 @@ function initMap() {
        });
       }
 
+
+function showSpinner() {
+  
+  spinner = document.getElementById('spinner');
+  spinner.className = "show";
+  setTimeout(() => {
+    spinner.className = spinner.className.replace("show", "");
+  }, 5000);
+}
+
+// function hideSpinner() {
+//   spinner.className = spinner.className.replace("show", "");
+// }
+
+
 function inputForm() {  
 
 
@@ -27,6 +42,7 @@ function inputForm() {
   form.addEventListener("submit", function(event) {
       event.preventDefault();
 
+      showSpinner();
       fetch("/ajax", {
         method:"POST",
         body: new FormData(form)
@@ -36,20 +52,27 @@ function inputForm() {
                                         lng:json['lng'],
                                         extract:json['extract'],
                                         response:json['response']}))
-                                        
-     
-                          
-      .then(function(addElement) {
+      
+      .then(function(addElement_gp) {
             // crée un nouvel élément div
             
+            var newDiv = document.createElement('grandpy');
+            newDiv.innerHTML = query['response'] ;
+            newDiv.className = 'grandpy-class';
+            document.getElementById("grandpy_1").appendChild(newDiv);
+            })                                  
+     
+            .then(setTimeout(function(addElement) {
+
+            // crée un nouvel élément div
             var newDiv = document.createElement('wiki');
-            newDiv.innerHTML = query['response'] + query['extract'] ;
+            newDiv.innerHTML = query['extract'] ;
             googlemap.setCenter(query);
             marker.setPosition(query);
             newDiv.className = 'wiki-class';
             document.getElementById("wiki_1").appendChild(newDiv);
-            })
-
+            },2000))
   });
   }
+
 

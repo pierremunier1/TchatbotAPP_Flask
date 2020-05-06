@@ -1,6 +1,8 @@
 from flask import render_template, jsonify, request ,json
 from . import tchatbotapp
 from .utils import Parser, GoogleApi ,WikiApi,Grandpy
+
+
 class Front:
 
     """class contains all methods to display the data to the front"""
@@ -21,8 +23,6 @@ class Front:
         query = GoogleApi(userQuery)
         userQuery = query.position()
         
-        
-
         try:
 
             # retrieve position and global adress from googleapi.
@@ -45,10 +45,6 @@ class Front:
             globalAddress = ''
             extract = ''
             response = Grandpy.reply_noanswer()
-
-            print("Aucune réponse")
-
-       
 
             # return complete response to the ajax function.
         

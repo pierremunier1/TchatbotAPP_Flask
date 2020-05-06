@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-  <script
-			  src="https://code.jquery.com/jquery-3.5.0.js"
-			  integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
-			  crossorigin="anonymous"></script>
-  <title>Document</title>
+  <title>GrandPy</title>
+</div>
 </head>
 <body>
+
+<div id="spinner"></div>
+
 <form id="usertext-form">
   <p>
     <label for="usertext">search</label>
@@ -23,8 +23,10 @@
 <script>inputForm();</script>
 
 <div id="map"></div>
-
+<div id="grandpy_1"></div>
 <div id="wiki_1"></div>
+
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt38pTyEwRtX7SzKInHy45GxnXF8NkxWo&callback=initMap"></script>
 

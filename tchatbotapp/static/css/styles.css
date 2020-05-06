@@ -23,8 +23,7 @@
 #grandpy_1{
 
   width: 400px;
-  height: 300px;
-  border : 1px solid black;
+  height: 200px;
   position: relative; 
   top: -500px;
   left: 700px;
@@ -41,9 +40,8 @@
 
   width: 400px;
   height: 300px;
-  border : 1px solid black;
   position: relative; 
-  top: -500px;
+  top: -600px;
   left: 700px;
   
 }
@@ -53,7 +51,7 @@
   width: 80px;
   height: 80px;
 
-  border: 2px solid #f3f3f3;
+  border: 4px solid #f3f3f3;
   border-top:3px solid #f25a41;
   border-radius: 100%;
 

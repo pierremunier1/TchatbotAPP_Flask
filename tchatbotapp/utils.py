@@ -109,7 +109,7 @@ class WikiApi:
                         'action': 'query',
                         'prop': 'extracts|info',
                         'inprop': 'url',
-                        'exchars': 200, 
+                        'exchars': 600, 
                         'explaintext': 1, 
                         'pageids': pageid} 
 
@@ -117,14 +117,17 @@ class WikiApi:
 
             extract_wiki = result.json()
 
-            return extract_wiki['query']['pages'][str(pageid)]['extract']
+            url=extract_wiki['query']['pages'][str(pageid)]['canonicalurl']
+            extract=extract_wiki['query']['pages'][str(pageid)]['extract']
+
+            return extract,url
 
 class Grandpy:
 
     
     def reply():
 
-        listanswer = ("Je connais très bien ce lieu.... ","Je vais te raconter l'histoire...    ")
+        listanswer = ("Je connais très bien ce lieu.... ","Je vais te raconter une histoire liée à ce lieu...")
 
         answer = choice(listanswer)
         print(answer)

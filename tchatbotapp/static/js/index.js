@@ -51,13 +51,15 @@ function inputForm() {
       .then(json => console.log(query={lat:json['lat'],
                                         lng:json['lng'],
                                         extract:json['extract'],
-                                        response:json['response']}))
+                                        response:json['response'],
+                                        globalAddress:json['globalAddress'],
+                                        url:json['url']}))
       
       .then(function(addElement_gp) {
             // crée un nouvel élément div
             
             var newDiv = document.createElement('grandpy');
-            newDiv.innerHTML = query['response'] ;
+            newDiv.innerHTML = query['response']+" situé a "+ query['globalAddress'];
             newDiv.className = 'grandpy-class';
             document.getElementById("grandpy_1").appendChild(newDiv);
             })                                  
@@ -66,12 +68,12 @@ function inputForm() {
 
             // crée un nouvel élément div
             var newDiv = document.createElement('wiki');
-            newDiv.innerHTML = query['extract'] ;
+            newDiv.innerHTML = query['extract']+" si tu veux en savoir plus..."+query['url'];
             googlemap.setCenter(query);
             marker.setPosition(query);
             newDiv.className = 'wiki-class';
             document.getElementById("wiki_1").appendChild(newDiv);
-            },2000))
+            },3000))
   });
   }
 

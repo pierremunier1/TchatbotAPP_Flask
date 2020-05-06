@@ -33,7 +33,8 @@ class Front:
             globalAddress = addressCoords[2]
             # send position to wiki api
             coords = WikiApi(latitude, longitude)
-            extract = coords.get_wiki()
+            extract = coords.get_wiki()[0]
+            url = coords.get_wiki()[1]
             response = Grandpy.reply()
         
         except:
@@ -44,6 +45,7 @@ class Front:
             longitude = ''
             globalAddress = ''
             extract = ''
+            url = ''
             response = Grandpy.reply_noanswer()
 
             # return complete response to the ajax function.
@@ -52,6 +54,7 @@ class Front:
                         'lng':longitude,
                         'globalAddress':globalAddress,
                         'extract': extract,
+                        'url': url,
                         'response':response})
                             
                             

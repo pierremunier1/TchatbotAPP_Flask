@@ -1,12 +1,10 @@
 
 // Index.js contain all functions of the GrandPy website
 
-
-
 function initMap() {
 // function initialize the google map on the front
 
-    let googlemap = new google.maps.Map(document.getElementById("map"),{
+      googlemap = new google.maps.Map(document.getElementById("map"),{
       zoom: 17,
       center: {lat:48.866,lng:2.333}
       
@@ -19,16 +17,6 @@ function initMap() {
              scale: 6
              }
       });
-}
-
-function showSpinner() {
- // function initialize the loader 
-
-  spinner = document.getElementById("spinner");
-  spinner.className = "show";
-  setTimeout(() => {
-    spinner.className = spinner.className.replace("show", "");
-  }, 5000);
 }
 
 function inputForm() {  
@@ -64,21 +52,14 @@ function inputForm() {
           newDiv.remove();
           })
 
-          return query
-          })                     
-     
-      .then(function (query) {
-            // add dynamic wiki div in the front page
-
-            newDiv = document.createElement("wiki");
-            newDiv.innerHTML = query["extract"]+query["url"];
-            newDiv.className = "wiki-class";
-            document.getElementById("wiki_1").appendChild(newDiv);
-            });
-            form.addEventListener("submit", function(event) {
-            event.preventDefault();
-            newDiv.remove();
-  
-            })
+          let newDiv_1 = document.createElement("wiki");
+          newDiv_1.innerHTML = query["extract"]+query["url"];
+          newDiv_1.className = "wiki-class";
+          document.getElementById("wiki_1").appendChild(newDiv_1);
+          form.addEventListener("submit", function(event) {
+          event.preventDefault();
+          newDiv_1.remove();
+          });
+          })
 })
 }

@@ -123,19 +123,16 @@ class WikiApi:
             return extract,url
 
 class Grandpy:
+    """give a random response"""
 
-    
     def reply():
+        """when the place is correct, give an response"""
 
-        listanswer = ("Je connais très bien ce lieu.... ","Je vais te raconter une histoire liée à ce lieu...")
-
-        answer = choice(listanswer)
-        print(answer)
+        answer = choice(config.LISTANSWER)
         return answer
 
     def reply_noanswer():
+        """when the place is incorrect, give an random response"""
 
-        listanswer = ("Je n'ai pas compris peux tu répeter la question?.... ","As-tu un problème de clavier?...    ")
-
-        noanswer = choice(listanswer)
+        noanswer = choice(config.LISTNOANSWER)
         return noanswer

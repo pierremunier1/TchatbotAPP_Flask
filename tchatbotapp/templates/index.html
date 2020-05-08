@@ -5,31 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <title>GrandPy</title>
 </div>
+
+<!--Title page-->
+
+<div id="head">
+    <h1> #AskGrandPy </h1>
+</div>
+
 </head>
 <body>
 
-<div id="spinner"></div>
+  <!--Input form-->
 
 <form id="usertext-form">
-  <p>
     <label for="usertext"></label>
-    <input type="text" id="usertext" class="input-usertext" name="usertext" placeholder="text here">
-    <input type="submit" id="submit" value="send"class="input-submit">
-  </p>
+    <input type="search" id="usertex"  name="usertext" autocomplete="off">
+    <button type="submit" id="submit">
+      <i class="fa fa-search"></i>
+    </button>
 </form>
-
 <script>inputForm();</script>
+
+<!--contain all div -->
 
 <div id="map"></div>
 <div id="grandpy_1"></div>
 <div id="wiki_1"></div>
+<div id="spinner"></div>
 
-
-
+<!--initialize map-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt38pTyEwRtX7SzKInHy45GxnXF8NkxWo&callback=initMap"></script>
-
 
 </body>
 </html>

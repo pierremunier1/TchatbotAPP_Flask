@@ -6,3 +6,9 @@ STOPWORDS = ["a", "abord", "absolument", "afin", "ah", "ai", "aie", "ailleurs", 
 
 API_KEY = "AIzaSyDt38pTyEwRtX7SzKInHy45GxnXF8NkxWo"
 
+LISTNOANSWER = ("Je n'ai pas compris peux tu répeter la question?.... ",
+             "As-tu un problème de clavier?...    ",
+             "Hmmm, je n'ai toujours pas compris je me fais vieux..")
+
+LISTANSWER = ("Biensur, je connais très bien ce lieu....voici l'adresse ",
+             "Je vais te raconter une histoire liée à ce lieu...")

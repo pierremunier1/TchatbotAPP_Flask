@@ -4,7 +4,6 @@ from .utils import Parser, GoogleApi ,WikiApi,Grandpy
 
 
 class Front:
-
     """class contains all methods to display the data to the front"""
     
     @tchatbotapp.route('/')
@@ -14,8 +13,8 @@ class Front:
    
     @tchatbotapp.route("/ajax", methods=["POST"])
     def ajax():
-        
         """analyse the text entered in the user input"""
+
         request.method == "POST"
         usertext = request.form["usertext"]
         analyse = Parser(usertext)
@@ -24,31 +23,22 @@ class Front:
         userQuery = query.position()
         
         try:
-
-            # retrieve position and global adress from googleapi.
             addressCoords = query.position() 
-            #print(addressCoords)
             latitude = addressCoords[0] 
             longitude = addressCoords[1]
             globalAddress = addressCoords[2]
-            # send position to wiki api
             coords = WikiApi(latitude, longitude)
             extract = coords.get_wiki()[0]
             url = coords.get_wiki()[1]
             response = Grandpy.reply()
         
         except:
-
-            # if no message do an different answer.
-            
             latitude = ''
             longitude = ''
             globalAddress = ''
             extract = ''
             url = ''
             response = Grandpy.reply_noanswer()
-
-            # return complete response to the ajax function.
         
         return jsonify({'lat':latitude, 
                         'lng':longitude,
@@ -56,5 +46,3 @@ class Front:
                         'extract': extract,
                         'url': url,
                         'response':response})
-                            
-                            

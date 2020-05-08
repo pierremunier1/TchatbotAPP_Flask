@@ -1,80 +1,84 @@
 
+// Index.js contain all functions of the GrandPy website
+
+
 
 function initMap() {
+// function initialize the google map on the front
 
-
-      googlemap = new google.maps.Map(document.getElementById('map'),{
+    let googlemap = new google.maps.Map(document.getElementById("map"),{
       zoom: 17,
       center: {lat:48.866,lng:2.333}
       
       });
 
       marker = new google.maps.Marker({
-        position :{lat: 48.866,lng:2.333},
-        animation: google.maps.Animation.DROP,
-        icon: { 
-          path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-          scale: 6
-        }
-       });
-      }
-
+      position :{lat: 48.866,lng:2.333},
+      animation: google.maps.Animation.DROP,
+      icon: {path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+             scale: 6
+             }
+      });
+}
 
 function showSpinner() {
-  
-  spinner = document.getElementById('spinner');
+ // function initialize the loader 
+
+  spinner = document.getElementById("spinner");
   spinner.className = "show";
   setTimeout(() => {
     spinner.className = spinner.className.replace("show", "");
   }, 5000);
 }
 
-// function hideSpinner() {
-//   spinner.className = spinner.className.replace("show", "");
-// }
-
-
 function inputForm() {  
-
+// analyze the text into the form to the server
 
   form = document.querySelector("#usertext-form");
 
   form.addEventListener("submit", function(event) {
       event.preventDefault();
 
-      showSpinner();
+      
       fetch("/ajax", {
         method:"POST",
         body: new FormData(form)
-      })
+        })
       .then(response => response.json())
-      .then(json => console.log(query={lat:json['lat'],
-                                        lng:json['lng'],
-                                        extract:json['extract'],
-                                        response:json['response'],
-                                        globalAddress:json['globalAddress'],
-                                        url:json['url']}))
-      
-      .then(function(addElement_gp) {
-            // crée un nouvel élément div
-            
-            var newDiv = document.createElement('grandpy');
-            newDiv.innerHTML = query['response']+" situé a "+ query['globalAddress'];
-            newDiv.className = 'grandpy-class';
-            document.getElementById("grandpy_1").appendChild(newDiv);
-            })                                  
+
+      .then(function (json) {
+          let query ={ 
+              lng:json["lng"],
+              extract:json["extract"],
+              response:json["response"],
+              globalAddress:json["globalAddress"],
+              url:json["url"]
+          };
+                           
+          let newDiv = document.createElement("grandpy");
+          newDiv.innerHTML = query["response"]+query["globalAddress"];
+          newDiv.className = "grandpy-class";
+          document.getElementById("grandpy_1").appendChild(newDiv);
+          form.addEventListener("submit", function(event) {
+          event.preventDefault();
+          newDiv.remove();
+          })
+
+          return query
+          })                     
      
-            .then(setTimeout(function(addElement) {
+      .then(function (query) {
+            // add dynamic wiki div in the front page
 
-            // crée un nouvel élément div
-            var newDiv = document.createElement('wiki');
-            newDiv.innerHTML = query['extract']+" si tu veux en savoir plus..."+query['url'];
-            googlemap.setCenter(query);
-            marker.setPosition(query);
-            newDiv.className = 'wiki-class';
+            newDiv = document.createElement("wiki");
+            newDiv.innerHTML = query["extract"]+query["url"];
+            newDiv.className = "wiki-class";
             document.getElementById("wiki_1").appendChild(newDiv);
-            },3000))
-  });
-  }
-
-
+            });
+            form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            newDiv.remove();
+  
+            })
+})
+}

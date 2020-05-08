@@ -1,79 +1,159 @@
 
+/* Title */
 
-.input-usertext {
- width: 700px; 
+#head {
+
+    color: white;
+    font-family: monospace;
+    left:0px;
+    right:-60%;
+    top : 45%;
+    margin: 0;
+   
+    text-align: center;
+    position: relative;
 }
 
-.input-submit {
-  width: 200px;
+/* Body style */
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    background: #778899;
+    
 }
 
-#map {
-  height: 500px;
-  width: 500px;
+
+/* Search form style */
+
+form{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 1s;
+    width: 370px;
+    height: 50px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid white;
+    padding: 5px;
+    
 }
+
+input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+}
+
+button{
+    display: none;
+}
+
+.fa{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+form:hover{
+    width: 400px;
+    cursor: pointer;
+}
+
+form:hover input{
+    display: block;
+}
+
+form:hover .fa{
+    background: #07051a;
+    color: white;
+}
+
+.wiki-class {
+   
+     color :rgb(253, 252, 252);
+     text-align : left;
+     font-family: monospace;
+     font-size:13pt;
+     margin:2px;
+     border-radius: 20px;
+     background-color:#778899;
+     position:absolute ;
+     padding: 0 20px;
+     padding: 5px;
+   }
+   
+
+/* Wikipedia div style */
+
+#wiki_1{
+
+    width: 400px;
+    height: 300px;
+    margin:2px;
+    border: black;
+    box-sizing: border-box;
+    position: absolute;
+    top: 200px;
+    left: 100px;
+}
+
+
+/* GrandPy Stle div */
 
 .grandpy-class {
 
-  color: black;
-  text-align : center;
-  margin:2px;
+     color:white;
+     text-align : left;
+     font-family: monospace;
+     font-size: 13pt;
+     margin:2px;
+     border-radius: 20px;
+     width: 390px;
+     height: 50px;
+     background-color:#778899;
+     position: absolute;
+     padding: 0 20px;
+     padding: 5px;
+   
 }
 
 #grandpy_1{
 
-  width: 400px;
-  height: 200px;
-  position: relative; 
-  top: -500px;
-  left: 700px;
-  
-}
-.wiki-class {
-
-  color: black;
-  text-align : center;
-  margin:2px;
+     
+     color :black;
+     text-align : left;
+     font-family: monospace;
+     position:absolute;
+     top: 100px;
+     left: 105px;
 }
 
-#wiki_1{
+/* Google Map Style*/
 
-  width: 400px;
-  height: 300px;
-  position: relative; 
-  top: -600px;
-  left: 700px;
-  
-}
-
-#spinner{
-  visibility: hidden;
-  width: 80px;
-  height: 80px;
-
-  border: 4px solid #f3f3f3;
-  border-top:3px solid #f25a41;
-  border-radius: 100%;
-
-  position: absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right: 0;
-  margin: auto;
-
-  animation: spin 2s infinite linear;
-}
-
-@keyframes spin {
-  from {
-      transform: rotate(0deg);
-  } to {
-      transform: rotate(360deg);
-  }
-}
-
-#spinner.show {
-  visibility: visible;
-}
-
+   #map_1 {
+     height: 500px;
+     width: 500px;
+   }

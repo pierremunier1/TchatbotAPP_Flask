@@ -4,13 +4,13 @@
 function initMap() {
 // function initialize the google map on the front
 
-      googlemap = new google.maps.Map(document.getElementById("map"),{
+      var googlemap = new google.maps.Map(document.getElementById("map"),{
       zoom: 17,
       center: {lat:48.866,lng:2.333}
       
       });
 
-      marker = new google.maps.Marker({
+      var marker = new google.maps.Marker({
       position :{lat: 48.866,lng:2.333},
       animation: google.maps.Animation.DROP,
       icon: {path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
@@ -40,25 +40,35 @@ function inputForm() {
               extract:json["extract"],
               response:json["response"],
               globalAddress:json["globalAddress"],
-              url:json["url"]
+              url:json["url"],
+              user:json["user"]
           };
-                           
-          let newDiv = document.createElement("grandpy");
-          newDiv.innerHTML = query["response"]+query["globalAddress"];
-          newDiv.className = "grandpy-class";
-          document.getElementById("grandpy_1").appendChild(newDiv);
+
+          let newDiv_2 = document.createElement("imessages");
+          newDiv_2.innerHTML = query["user"];
+          newDiv_2.className = "from-me";
+          document.getElementById("imessages").appendChild(newDiv_2);
           form.addEventListener("submit", function(event) {
           event.preventDefault();
-          newDiv.remove();
+
+          })                 
+          
+          let newDiv = document.createElement("imessages");
+          newDiv.innerHTML = query["response"]+query["globalAddress"];
+          newDiv.className = "from-them";
+          document.getElementById("imessages").appendChild(newDiv);
+          form.addEventListener("submit", function(event) {
+          event.preventDefault();
+          
           })
 
-          let newDiv_1 = document.createElement("wiki");
+          let newDiv_1 = document.createElement("imessages");
           newDiv_1.innerHTML = query["extract"]+query["url"];
-          newDiv_1.className = "wiki-class";
-          document.getElementById("wiki_1").appendChild(newDiv_1);
+          newDiv_1.className = "from-them";
+          document.getElementById("imessages").appendChild(newDiv_1);
           form.addEventListener("submit", function(event) {
           event.preventDefault();
-          newDiv_1.remove();
+          
           });
           })
 })

@@ -22,6 +22,8 @@ class Front:
         query = GoogleApi(userQuery)
         userQuery = query.position()
         
+        
+        
         try:
             addressCoords = query.position() 
             latitude = addressCoords[0] 
@@ -31,11 +33,15 @@ class Front:
             extract = coords.get_wiki()[0]
             url = coords.get_wiki()[1]
             response = Grandpy.reply()
+            user = usertext
+            
+            
         
         except:
             latitude = ''
             longitude = ''
             globalAddress = ''
+            user = ''
             extract = ''
             url = ''
             response = Grandpy.reply_noanswer()
@@ -45,4 +51,6 @@ class Front:
                         'globalAddress':globalAddress,
                         'extract': extract,
                         'url': url,
-                        'response':response})
+                        'response':response,
+                        'user':usertext
+                        })

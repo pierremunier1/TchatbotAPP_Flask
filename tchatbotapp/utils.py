@@ -34,7 +34,7 @@ class Parser:
 
         #to convert the list to string.
         self.analyse = ' '.join(self.analyse)
-
+        
         return self.analyse
 
 class GoogleApi:

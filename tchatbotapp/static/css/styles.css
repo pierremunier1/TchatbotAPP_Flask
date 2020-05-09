@@ -91,62 +91,90 @@ form:hover .fa{
     color: white;
 }
 
-.wiki-class {
-   
-     color :rgb(253, 252, 252);
-     text-align : left;
-     font-family: monospace;
-     font-size:13pt;
-     margin:2px;
-     border-radius: 20px;
-     background-color:#778899;
-     position:absolute ;
-     padding: 0 20px;
-     padding: 5px;
-   }
-   
 
-/* Wikipedia div style */
 
-#wiki_1{
 
-    width: 400px;
-    height: 300px;
-    margin:2px;
-    border: black;
-    box-sizing: border-box;
-    position: absolute;
-    top: 200px;
-    left: 100px;
+/* tchat */
+
+
+#imessages {
+  font-family: "monospace";
+  font-weight: normal;
+  font-size: 14px;
+  left:-35%;
+  position: relative;
+  max-width: 320px;
+  margin: 0px auto;
+}
+section div {
+  max-width: 255px;
+  word-wrap: break-word;
+  margin-bottom: 10px;
+  line-height: 24px;
 }
 
 
-/* GrandPy Stle div */
-
-.grandpy-class {
-
-     color:white;
-     text-align : left;
-     font-family: monospace;
-     font-size: 13pt;
-     margin:2px;
-     border-radius: 20px;
-     width: 390px;
-     height: 50px;
-     background-color:#778899;
-     position: absolute;
-     padding: 0 20px;
-     padding: 5px;
-   
+.from-me {
+  position: relative;
+  padding: 10px 20px;
+  color: white;
+  background: #0B93F6;
+  border:4 transparent;
+  border-radius: 25px;
+  float: right;
+}
+.from-me:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -2px;
+  right: -7px;
+  height: 20px;
+  border-right: 20px solid #0B93F6;
+  border-bottom-left-radius: 16px 14px;
+  -webkit-transform: translate(0, -2px);
+}
+.from-me:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: -2px;
+  right: -56px;
+  width: 26px;
+  height: 20px;
+  background: #778899;
+  border-bottom-left-radius: 10px;
+  -webkit-transform: translate(-30px, -2px);
 }
 
-#grandpy_1{
-
-     
-     color :black;
-     text-align : left;
-     font-family: monospace;
-     position:absolute;
-     top: 100px;
-     left: 105px;
+.from-them {
+  position: relative;
+  padding: 10px 20px;
+  background: #E5E5EA;
+  border-radius: 25px;
+  color: black;
+  float: left;
+}
+.from-them:before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  bottom: -2px;
+  left: -7px;
+  height: 20px;
+  border-left: 20px solid #E5E5EA;
+  border-bottom-right-radius: 16px 14px;
+  -webkit-transform: translate(0, -2px);
+}
+.from-them:after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  bottom: -2px;
+  left: 4px;
+  width: 26px;
+  height: 20px;
+  background:#778899;
+  border-bottom-right-radius: 10px;
+  -webkit-transform: translate(-30px, -2px);
 }

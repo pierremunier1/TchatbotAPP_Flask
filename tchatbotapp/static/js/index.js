@@ -44,32 +44,30 @@ function inputForm() {
               user:json["user"]
           };
 
-          let newDiv_2 = document.createElement("imessages");
-          newDiv_2.innerHTML = query["user"];
-          newDiv_2.className = "from-me";
-          document.getElementById("imessages").appendChild(newDiv_2);
+          let newDiv_0 = document.createElement("imessages");
+          newDiv_0.innerHTML = query["user"];
+          newDiv_0.className = "from-me";
+          document.getElementById("imessages").appendChild(newDiv_0);
           form.addEventListener("submit", function(event) {
           event.preventDefault();
 
           })                 
           
-          let newDiv = document.createElement("imessages");
-          newDiv.innerHTML = query["response"]+query["globalAddress"];
-          newDiv.className = "from-them";
-          document.getElementById("imessages").appendChild(newDiv);
-          form.addEventListener("submit", function(event) {
-          event.preventDefault();
-          
-          })
-
           let newDiv_1 = document.createElement("imessages");
-          newDiv_1.innerHTML = query["extract"]+query["url"];
+          newDiv_1.innerHTML = query["response"]+query["globalAddress"];
           newDiv_1.className = "from-them";
           document.getElementById("imessages").appendChild(newDiv_1);
           form.addEventListener("submit", function(event) {
           event.preventDefault();
-          
-          });
+
           })
+
+          if (query["globalAddress"] !='') {
+            let newDiv_2 = document.createElement("imessages");
+            newDiv_2.innerHTML = query["extract"]+query["url"];
+            newDiv_2.className = "from-them";
+            document.getElementById("imessages").appendChild(newDiv_2);
+          }
+          });
 })
 }

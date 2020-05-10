@@ -31,19 +31,11 @@ body {
 
 #chatbox
 {
-    display: block;
-    text-align: center;
-    width: 400px;
-    height: 400px;
-    margin: auto;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
 }
 
-#usertext-form{
-
-  position: absolute;
-  display: inline-block;
-
-}
 
 form{
     transform: translate(-50%,-50%);
@@ -55,14 +47,10 @@ form{
     border-radius: 25px;
     border: 1px solid white;
     padding: 5px;
-    position: relative;
-    margin-left: auto;
-    margin-right:auto ;
+    position: absolute;
+    left: 52%;
+    margin-left: -50px;
     bottom: 100px;
-    display: inline-block;
-    
-  
-    
     
 }
 
@@ -120,13 +108,13 @@ form:hover .fa{
   font-size: 14px;
   overflow-y: scroll;
   overflow-x: hidden;
-  max-width: 350px;
-  height: 400px;
-  display: block;
-  position: relative;
-  margin-left: auto;
-  margin-right:auto ;
-  
+  scrollbar-color:rgb(68, 87, 100);
+  position: absolute;
+  left: 41%;
+  margin-left: -50px;
+  bottom: 200px;
+  width: 350px;
+  height: 520px;
 }
 section div {
   max-width: 255px;
@@ -140,7 +128,7 @@ section div {
   position: relative;
   padding: 10px 20px;
   color: white;
-  background: #0B93F6;
+  background: rgb(68, 87, 100);
   border:4 transparent;
   border-radius: 25px;
   float: right;
@@ -152,7 +140,7 @@ section div {
   bottom: -2px;
   right: -7px;
   height: 20px;
-  border-right: 20px solid #0B93F6;
+  border-right: 20px solid rgb(68, 87, 100);
   border-bottom-left-radius: 16px 14px;
   -webkit-transform: translate(0, -2px);
 }

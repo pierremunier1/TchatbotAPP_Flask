@@ -4,22 +4,25 @@
 function initMap() {
 // function initialize the google map on the front
 
-      var googlemap = new google.maps.Map(document.getElementById("map"),{
+      let googlemap = new google.maps.Map(document.getElementById("map"),{
       zoom: 17,
       center: {lat:48.866,lng:2.333}
       
       });
 
-      var marker = new google.maps.Marker({
+      let marker = new google.maps.Marker({
       position :{lat: 48.866,lng:2.333},
       animation: google.maps.Animation.DROP,
       icon: {path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
              scale: 6
              }
+      
       });
+
+      return googlemap
 }
 
-function inputForm() {  
+function inputForm(googlemap) {  
 // analyze the text into the form to the server
 
   form = document.querySelector("#usertext-form");
@@ -66,9 +69,11 @@ function inputForm() {
 
           if (query["globalAddress"] !='') {
             let newDiv_2 = document.createElement("imessages");
-            newDiv_2.innerHTML = query["extract"]+query["url"];
+            newDiv_2.innerHTML = query["extract"]+query["url"]+googlemap;
             newDiv_2.className = "from-them";
             document.getElementById("imessages").appendChild(newDiv_2);
+            let div = document.getElementById("imessages");
+            div.scrollTop = div.scrollHeight;
           }
           });
 })

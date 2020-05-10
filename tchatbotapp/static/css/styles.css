@@ -9,7 +9,7 @@
     right:-60%;
     top : 45%;
     margin: 0;
-   
+    display: none;
     text-align: center;
     position: relative;
 }
@@ -28,10 +28,24 @@ body {
 
 /* Search form style */
 
+
+#chatbox
+{
+    display: block;
+    text-align: center;
+    width: 400px;
+    height: 400px;
+    margin: auto;
+}
+
+#usertext-form{
+
+  position: absolute;
+  display: inline-block;
+
+}
+
 form{
-    position: relative;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%,-50%);
     transition: all 1s;
     width: 370px;
@@ -41,13 +55,19 @@ form{
     border-radius: 25px;
     border: 1px solid white;
     padding: 5px;
+    position: relative;
+    margin-left: auto;
+    margin-right:auto ;
+    bottom: 100px;
+    display: inline-block;
+    
+  
+    
     
 }
 
 input{
-    position: absolute;
-    top: 0;
-    left: 0;
+    
     width: 100%;;
     height: 42.5px;
     line-height: 30px;
@@ -78,7 +98,7 @@ button{
 }
 
 form:hover{
-    width: 400px;
+    width: 470px;
     cursor: pointer;
 }
 
@@ -91,9 +111,6 @@ form:hover .fa{
     color: white;
 }
 
-
-
-
 /* tchat */
 
 
@@ -101,10 +118,15 @@ form:hover .fa{
   font-family: "monospace";
   font-weight: normal;
   font-size: 14px;
-  left:-35%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-width: 350px;
+  height: 400px;
+  display: block;
   position: relative;
-  max-width: 320px;
-  margin: 0px auto;
+  margin-left: auto;
+  margin-right:auto ;
+  
 }
 section div {
   max-width: 255px;

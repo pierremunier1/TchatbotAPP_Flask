@@ -57,6 +57,8 @@ function inputForm() {
           newDiv_1.innerHTML = query["response"]+query["globalAddress"];
           newDiv_1.className = "from-them";
           document.getElementById("imessages").appendChild(newDiv_1);
+          let div = document.getElementById("imessages");
+          div.scrollTop = div.scrollHeight;
           form.addEventListener("submit", function(event) {
           event.preventDefault();
 

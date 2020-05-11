@@ -53,15 +53,13 @@ function inputForm(place) {
               user:json["user"]
           };
 
-          let newDiv_0 = document.createElement("imessages");
-          newDiv_0.innerHTML = query["user"];
-          newDiv_0.className = "from-me";
-          document.getElementById("imessages").appendChild(newDiv_0);
-          form.addEventListener("submit", function(event) {
-          event.preventDefault();
-
-          })                 
-          
+          if (query["user"] !='') {
+            let newDiv_0 = document.createElement("imessages");
+            newDiv_0.innerHTML = query["user"];
+            newDiv_0.className = "from-me";
+            document.getElementById("imessages").appendChild(newDiv_0);
+          }
+                         
           let newDiv_1 = document.createElement("imessages");
           newDiv_1.innerHTML = query["response"]+query["globalAddress"];
           newDiv_1.className = "from-them";
@@ -70,7 +68,6 @@ function inputForm(place) {
           div.scrollTop = div.scrollHeight;
           form.addEventListener("submit", function(event) {
           event.preventDefault();
-
           })
 
           if (query["globalAddress"] !='') {

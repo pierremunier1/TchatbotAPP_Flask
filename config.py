@@ -7,8 +7,12 @@ STOPWORDS = ["a", "abord", "absolument", "afin", "ah", "ai", "aie", "ailleurs", 
 API_KEY = "AIzaSyDt38pTyEwRtX7SzKInHy45GxnXF8NkxWo"
 
 LISTNOANSWER = ("Je n'ai pas compris peux tu répeter la question?.... ",
-             "As-tu un problème de clavier?...    ",
-             "Hmmm, je n'ai toujours pas compris je me fais vieux..")
+                "As-tu un problème de clavier?...    ",
+                "Hmmm, je n'ai toujours pas compris je me fais vieux..")
 
-LISTANSWER = ("Biensur, je connais très bien ce lieu....voici l'adresse ",
-             "Je vais te raconter une histoire liée à ce lieu...")
+LISTANSWER = ("Bien sûr mon poussin ! La voici :",
+             "Evidemment que je connais cet adresse ! La voici :...")
+
+LISTANSWER_1 = ("Je vais te raconter une histoire liée à ce lieu...",
+             "Mais t'ai-je déjà raconté l'histoire de ce quartier qui m'a vu en culottes courtes ?" )
+                

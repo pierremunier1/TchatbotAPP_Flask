@@ -1,28 +1,33 @@
 
 // Index.js contain all functions of the GrandPy website
 
-function initMap() {
+function initMap(query) {
 // function initialize the google map on the front
+
+      
 
       let googlemap = new google.maps.Map(document.getElementById("map"),{
       zoom: 17,
-      center: {lat:48.866,lng:2.333}
+      center: query
       
       });
 
-      let marker = new google.maps.Marker({
-      position :{lat: 48.866,lng:2.333},
+      marker = new google.maps.Marker({
+      map:googlemap,
+      draggable: true,
+      position :query,
       animation: google.maps.Animation.DROP,
-      icon: {path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-             scale: 6
-             }
-      
-      });
 
-      return googlemap
+      });
+      let infoWindow = new google.maps.InfoWindow({
+            content: "<h4>C'est ici !</h4>"
+            });
+            marker.addListener('mouseover', function(){
+              infoWindow.open(map, marker);    
+            });
 }
 
-function inputForm(googlemap) {  
+function inputForm(place) {  
 // analyze the text into the form to the server
 
   form = document.querySelector("#usertext-form");
@@ -40,6 +45,7 @@ function inputForm(googlemap) {
       .then(function (json) {
           let query ={ 
               lng:json["lng"],
+              lat:json["lat"],
               extract:json["extract"],
               response:json["response"],
               globalAddress:json["globalAddress"],
@@ -69,11 +75,16 @@ function inputForm(googlemap) {
 
           if (query["globalAddress"] !='') {
             let newDiv_2 = document.createElement("imessages");
-            newDiv_2.innerHTML = query["extract"]+query["url"]+googlemap;
+            newDiv_2.innerHTML = query["extract"]+('<a href="'+query["url"]+'">-En savoir plus sur Wikipedia.</a>');
             newDiv_2.className = "from-them";
             document.getElementById("imessages").appendChild(newDiv_2);
             let div = document.getElementById("imessages");
             div.scrollTop = div.scrollHeight;
+            
+            let newDiv_3 = document.createElement("map");
+            newDiv_3.innerHTML = initMap(query);
+            document.getElementById("map").appendChild(newDiv_3);
+            document.getElementById("map").style.visibility="visible";
           }
           });
 })

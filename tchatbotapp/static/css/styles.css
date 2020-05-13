@@ -1,146 +1,101 @@
 
-/* Title */
-
-#head {
-
-    color: white;
-    font-family: Courier ;
-    left:-25px;
-    top : 3%;
-    font-size: 30px;
-    position: absolute;
-    width: 500px;
-    text-align: center;
-    position: relative;
-}
-
-#head_2 {
-
-    color: white;
-    font-family: Courier;
-    left:280px;
-    top : -91px;
-    font-size: 30px;
-    position: absolute;
-    width: 500px;
-    text-align: center;
-    position: relative;
-
-
-}
-
-/* Body style */
-
 body {
     padding: 0;
     margin: 0;
-    height: 100vh;
-    width: 100%;
-    background: #778899;
+    background: hsl(210, 14%, 53%);
+    height: 100%
+}
+
+
+/* header */
+
+
+.cont_title {
+
+  display: flex;
+  height: 80px;
+  float: row;
+  justify-content: left;
+  align-items: center;
+  align-content: center;
+  margin-left: 10px;
     
 }
 
+.title1{
 
-/* Search form style */
+  font-size:50pt;
+  font-family: monospace;
+  color: white;
 
-
-#chatbox
-{
-  width: 400px;
-  height: 400px;
-  margin: 0 auto;
 }
 
+.title2{
 
-form{
-    transform: translate(-50%,-50%);
-    transition: all 1s;
-    width: 370px;
-    height: 50px;
-    background: white;
-    box-sizing: border-box;
-    border-radius: 25px;
-    border: 1px solid white;
-    padding: 5px;
-    position: absolute;
-    left: 52%;
-    margin-left: -50px;
-    bottom: 100px;
-    
+  font-size:50pt;
+  font-family: monospace;
+  color:white;
+
 }
 
-input{
-    
-    width: 100%;;
-    height: 42.5px;
-    line-height: 30px;
-    outline: 0;
-    border: 0;
-    border-radius: 20px;
-    padding: 0 20px;
+#donut{
+
+  width: 80px;
+  height: 80px;
+
 }
 
-button{
-    display: none;
+/* section */
+
+section{
+
+  display: flex;
+  max-height: 550px;
+  flex-direction:row;
+  justify-content: space-around;
+  align-items: center;
+  
 }
 
-.fa{
-    box-sizing: border-box;
-    padding: 10px;
-    width: 42.5px;
-    height: 42.5px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 50%;
-    color: #07051a;
-    text-align: center;
-    transition: all 1s;
-}
+.grandpy{
 
-form:hover{
-    width: 470px;
-    cursor: pointer;
-}
-
-form:hover input{
-    display: block;
-}
-
-form:hover .fa{
-    background: #07051a;
-    color: white;
-}
-
-/* tchat */
-
-
-#imessages {
-  font-family: "monospace";
-  font-weight: normal;
-  font-size: 14px;
-  overflow:hidden;
-  position: absolute;
-  left: 41%;
-  margin-left: -50px;
-  bottom: 200px;
+  display: flex;
   width: 350px;
-  height: 520px;
+  height: 350px;
 }
+
+.tchatbox{
+
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 550px;
+  
+}
+
+.imessages{
+
+  font-size: 10pt;
+  font-family: monospace;
+  width: 330px;
+  height: 500px;
+  margin: auto;
+  overflow: hidden;
+
+}
+
 section div {
-  max-width: 255px;
+  max-width: 350px;
   word-wrap: break-word;
   margin-bottom: 10px;
   line-height: 24px;
 }
-
 
 .from-me {
   position: relative;
   padding: 10px 20px;
   color: white;
   background: rgb(68, 87, 100);
-
   border-radius: 25px;
   float: right;
 }
@@ -151,9 +106,9 @@ section div {
   bottom: -2px;
   right: -7px;
   height: 20px;
-  border-right: 20px solid rgb(68, 87, 100);
-  border-bottom-left-radius: 16px 14px;
-  -webkit-transform: translate(0, -2px);
+  
+  
+  
 }
 .from-me:after {
   content: "";
@@ -164,8 +119,8 @@ section div {
   width: 26px;
   height: 20px;
   background: #778899;
-  border-bottom-left-radius: 10px;
-  -webkit-transform: translate(-30px, -2px);
+ 
+  
 }
 
 .from-them {
@@ -183,9 +138,7 @@ section div {
   bottom: -2px;
   left: -7px;
   height: 20px;
-  border-left: 20px solid #E5E5EA;
-  border-bottom-right-radius: 16px 14px;
-  -webkit-transform: translate(0, -2px);
+ 
 }
 .from-them:after {
   content: "";
@@ -195,65 +148,90 @@ section div {
   left: 4px;
   width: 26px;
   height: 20px;
-  background:#778899;
-  border-bottom-right-radius: 10px;
-  -webkit-transform: translate(-30px, -2px);
+  
+}
+.map_google{
+
+  display: flex;
+  visibility: hidden;
+  width: 350px;
+  height: 350px;
+  
 }
 
-#map {
+.map{
 
-  width: 400px;
-  height: 400px;
-  visibility:hidden;
-  position: absolute;
-  left: 70%;
-  margin-left: -50px;
-  border:3px solid #47525e ;
-  bottom: 200px;
+  border: 3px solid rgb(68, 87, 100);
+  width: 350px;
+  height: 350px;
+
 }
 
-#grandpy1{
+/* section2 */
 
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  left: 10%;
-  margin-left: -50px;
-  bottom: 200px;
+.user{
+
+  display: flex;
+  width: 350px;
+  height: 80px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
+}
+
+form{
+
+    width: 350px;
+    height: 50px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid white;
+    
+}
+
+input{
+    
+    width: 340px;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    border-radius: 20px;
+    padding: 0 20px;
+
+    
+}
+
+button{
+    display: none;
+}
+
+/* footer*/
+
+
+.footer{
+
+  display: flex;
+  max-height: 40px;
+  flex-direction:row;
+  justify-content: right;
+  align-items: center;
+  
+}
+
+#author{
+
+  font-size: 10pt;
+  font-family: monospace;
+  color: black;
 
 }
 
 #github{
 
+  height: 30px;
   width: 30px;
-  height: 30px;
-  position: absolute;
-  left: 80%;
-  margin-left: -50px;
-  bottom: 50px;
-
-}
-
-#logo {
-
-  width: 200px;
-  height: 30px;
-  position: absolute;
-  left: 82%;
-  margin-left: -50px;
-  bottom: 43px;
-  font-family: "monospace";
-  font-weight: normal;
-  font-size: 12px;
-}
-
-#donut{
-
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  left: 28%;
-  margin-left: -50px;
-  bottom: 600px;
-
 }

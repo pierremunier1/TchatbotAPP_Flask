@@ -7,42 +7,41 @@ import config
 
 
 class Parser:
-
     """class contains method to parse the user text input form"""
 
-    def __init__(self,analyse):
+    def __init__(self, analyse):
         """initialising attribute"""
 
         self.analyse = analyse
-        
-    def parse(self):
 
+    def parse(self):
         """method analyse the text and transform if necessary"""
 
-        """transformation method"""
-        #switch to lower case
+        # switch to lower case
         self.analyse = self.analyse.lower()
-        
-        #remove accent
-        self.analyse = ''.join((c for c in unicodedata.normalize('NFD', self.analyse) if unicodedata.category(c) != 'Mn'))
-        
-        #remove punctuation
+
+        # remove accent
+        self.analyse = ''.join((c for c in unicodedata.normalize
+                                ('NFD', self.analyse)
+                                if unicodedata.category(c) != 'Mn')
+                               )
+
+        # remove punctuation
         self.analyse = re.sub(r"[.!,;?\']", " ", self.analyse).split()
-        
-        #check stopword
+
+        # check stopword
         self.analyse = [x for x in self.analyse if x not in config.STOPWORDS]
 
-        #to convert the list to string.
+        # to convert the list to string.
         self.analyse = ' '.join(self.analyse)
-        
+
         return self.analyse
 
-class GoogleApi:
 
+class GoogleApi:
     """classe contains method for geocoding api"""
 
-    def __init__(self,userQuery):
-
+    def __init__(self, userQuery):
         """initializing instance attributes"""
 
         self.user_query = userQuery
@@ -50,13 +49,13 @@ class GoogleApi:
         self.longitude = float
         self.global_address = str
 
-
     def position(self):
-
         """method find the correct position with geocoding google api"""
 
-        payload = {'address': self.user_query, 'key' : config.API_KEY}
-        result = requests.get('https://maps.googleapis.com/maps/api/geocode/json', params=payload)
+        payload = {'address': self.user_query, 'key': config.API_KEY}
+        result = requests.get(
+            'https://maps.googleapis.com/maps/api/geocode/json',
+            params=payload)
         google_maps = result.json()
         status = google_maps['status']
 
@@ -65,62 +64,62 @@ class GoogleApi:
             self.longitude = google_maps['results'][0]['geometry']['location']['lng']
             self.global_address = google_maps['results'][0]['formatted_address']
             return self.latitude, self.longitude, self.global_address
-        
-        elif status =='ZERO_RESULTS':
+
+        elif status == 'ZERO_RESULTS':
             print("Adresse non trouvée")
 
 
-
-
 class WikiApi:
-
     """class contain all methods to retreive data from mediawiki api"""
 
-    def __init__(self,latitude, longitude):
-
+    def __init__(self, latitude, longitude):
         """ Initializing instance attribute """
 
         self.latitude = latitude
         self.longitude = longitude
 
     def get_wiki(self):
-
         """get wikipedia articles from mediawiki api in two step"""
 
         geo = '{}|{}'.format(self.latitude, self.longitude)
 
-        payload = {'format': 'json', 
+        payload = {'format': 'json',
                    'action': 'query',
                    'list': 'geosearch',
-                   'gsradius':50, 
+                   'gsradius': 50,
                    'gscoord': geo}
 
-        result = requests.get('https://fr.wikipedia.org/w/api.php', params=payload)
+        result = requests.get(
+            'https://fr.wikipedia.org/w/api.php',
+            params=payload)
 
-        #second step if statut code is ok, retreive all details of the selected articles
+        # second step if statut code is ok, retreive all details of the
+        # selected articles
 
         if result.status_code == 200:
             media_wiki = result.json()
-            
+
             pageid = media_wiki['query']['geosearch'][0]['pageid']
 
-    
-            payload = {'format': 'json', 
-                        'action': 'query',
-                        'prop': 'extracts|info',
-                        'inprop': 'url',
-                        'exchars': 600, 
-                        'explaintext': 1, 
-                        'pageids': pageid} 
+            payload = {'format': 'json',
+                       'action': 'query',
+                       'prop': 'extracts|info',
+                       'inprop': 'url',
+                       'exchars': 600,
+                       'explaintext': 1,
+                       'pageids': pageid}
 
-            result = requests.get('https://fr.wikipedia.org/w/api.php', params=payload)
+            result = requests.get(
+                'https://fr.wikipedia.org/w/api.php',
+                params=payload)
 
             extract_wiki = result.json()
 
-            url=extract_wiki['query']['pages'][str(pageid)]['canonicalurl']
-            extract=extract_wiki['query']['pages'][str(pageid)]['extract']
+            url = extract_wiki['query']['pages'][str(pageid)]['canonicalurl']
+            extract = extract_wiki['query']['pages'][str(pageid)]['extract']
 
-            return extract,url
+            return extract, url
+
 
 class Grandpy:
     """give a random response"""
@@ -128,11 +127,11 @@ class Grandpy:
     def reply():
         """when the place is correct, give an response"""
 
-        answer = choice(config.LISTANSWER)
+        answer = choice(config.LISTREPLY)
         return answer
 
     def reply_noanswer():
         """when the place is incorrect, give an random response"""
 
-        noanswer = choice(config.LISTNOANSWER)
+        noanswer = choice(config.LISTNOREPLY)
         return noanswer

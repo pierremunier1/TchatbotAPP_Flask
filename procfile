@@ -1,2 +1,1 @@
 web: gunicorn dismoitout:app
-init: FLASK_APP=main.py

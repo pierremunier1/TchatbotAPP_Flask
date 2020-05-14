@@ -1,1 +1,1 @@
-web: gunicorn tchatbotapp:app
+web: gunicorn main:tchatbotapp

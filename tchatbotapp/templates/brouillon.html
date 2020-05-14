@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
       <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-    <title>Document</title>
+      <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/donut.png') }}" />
+    <title>#Dismoitout!</title>
 </head>
 <body>
 
@@ -45,18 +46,15 @@
   </form> 
   </div>
 
-<!--initialize map-->
+<!--initialize function-->
 
 <script>inputForm();</script>
-
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt38pTyEwRtX7SzKInHy45GxnXF8NkxWo&callback=initMap"></script>
 
 <footer>
 <div class="footer">
     <div class="logo">
-    <img src="{{ url_for('static', filename='images/github.png') }}" alt="logo github" id="github">
-    <a href="https://github.com/pierremunier1/projet_7"></a>
+    <a href="https://github.com/pierremunier1/projet_7"><img src="{{ url_for('static', filename='images/github.png') }}" alt="logo github" id="github"></a>
     </div>
 <div id="author">Developed by Pierre Munier</div>
 </div>

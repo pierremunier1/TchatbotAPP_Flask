@@ -14,7 +14,7 @@ body {
 
   display: flex;
   height: 80px;
-  float: row;
+  flex-direction: row;
   justify-content: left;
   align-items: center;
   align-content: center;
@@ -119,8 +119,6 @@ section div {
   width: 26px;
   height: 20px;
   background: #778899;
- 
-  
 }
 
 .from-them {
@@ -161,7 +159,7 @@ section div {
 
 .map{
 
-  border: 3px solid rgb(68, 87, 100);
+  border: 2px solid rgb(68, 87, 100);
   width: 350px;
   height: 350px;
 
@@ -188,19 +186,20 @@ form{
     background: white;
     box-sizing: border-box;
     border-radius: 25px;
-    border: 1px solid white;
+    
     
 }
 
 input{
     
-    width: 340px;
-    height: 42.5px;
+    width: 350px;
+    height: 50px;
     line-height: 30px;
     outline: 0;
     border: 0;
-    border-radius: 20px;
     padding: 0 20px;
+    border-radius: 25px;
+    justify-content: center;
 
     
 }

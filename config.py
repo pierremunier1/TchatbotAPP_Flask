@@ -12,3 +12,4 @@ LISTNOREPLY = ("Je n'ai pas compris peux tu répeter la question?.... ",
 
 LISTREPLY = ("Bien sûr mon poussin ! La voici :",
              "Evidemment que je connais cet adresse ! La voici :...")
+

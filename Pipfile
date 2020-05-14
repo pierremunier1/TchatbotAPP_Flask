@@ -6,8 +6,7 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-requests = "*"
-unicodedata = "*"
-re = "*"
-random = "*"
 flask = "*"
+
+[requires]
+python_version = "3.7"

@@ -13,3 +13,4 @@ LISTREPLY = ("Bien sûr mon poussin ! La voici :",
              "Evidemment que je connais cet adresse ! La voici :...")
 
 API_KEY = os.environ.get("API_KEY")
+print(API_KEY)

@@ -80,7 +80,7 @@ section{
   width: 330px;
   height: 500px;
   margin: auto;
-  overflow: hidden;
+  overflow-y: scroll;
 
 }
 

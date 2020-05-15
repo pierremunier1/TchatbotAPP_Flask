@@ -10,6 +10,8 @@ Flask = "*"
 requests = "*"
 gunicorn = "*"
 pytest = "*"
+dotenv = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"

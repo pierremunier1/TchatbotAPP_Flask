@@ -4,47 +4,47 @@ from .utils import Parser, GoogleApi, WikiApi, Grandpy
 import os
 
 
-    """class contains all methods to display the data to the front"""
+"""class contains all methods to display the data to the front"""
 
-    @tchatbotapp.route('/')
-    def index():
-        return render_template('index.html',API_KEY=os.environ.get('API_KEY'))
+@tchatbotapp.route('/')
+def index():
+    return render_template('index.html',API_KEY=os.environ.get('API_KEY'))
 
-    @tchatbotapp.route("/ajax", methods=["POST"])
-    def ajax():
-        """analyse the text entered in the user input"""
+@tchatbotapp.route("/ajax", methods=["POST"])
+def ajax():
+    """analyse the text entered in the user input"""
 
-        usertext = request.form["usertext"]
-        analyse = Parser(usertext)
-        userQuery = analyse.parse()
-        query = GoogleApi(userQuery)
-        userQuery = query.position()
+    usertext = request.form["usertext"]
+    analyse = Parser(usertext)
+    userQuery = analyse.parse()
+    query = GoogleApi(userQuery)
+    userQuery = query.position()
 
-        try:
-            addressCoords = query.position()
-            latitude = addressCoords[0]
-            longitude = addressCoords[1]
-            globalAddress = addressCoords[2]
-            coords = WikiApi(latitude, longitude)
-            extract = coords.get_wiki()[0]
-            url = coords.get_wiki()[1]
-            response = Grandpy.reply()
-            user = usertext
+    try:
+        addressCoords = query.position()
+        latitude = addressCoords[0]
+        longitude = addressCoords[1]
+        globalAddress = addressCoords[2]
+        coords = WikiApi(latitude, longitude)
+        extract = coords.get_wiki()[0]
+        url = coords.get_wiki()[1]
+        response = Grandpy.reply()
+        user = usertext
 
-        except BaseException:
-            latitude = ''
-            longitude = ''
-            globalAddress = ''
-            user = ''
-            extract = ''
-            url = ''
-            response = Grandpy.reply_noanswer()
+    except BaseException:
+        latitude = ''
+        longitude = ''
+        globalAddress = ''
+        user = ''
+        extract = ''
+        url = ''
+        response = Grandpy.reply_noanswer()
 
-        return jsonify({'lat': latitude,
-                        'lng': longitude,
-                        'globalAddress': globalAddress,
-                        'extract': extract,
-                        'url': url,
-                        'response': response,
-                        'user': usertext
-                        })
+    return jsonify({'lat': latitude,
+                    'lng': longitude,
+                    'globalAddress': globalAddress,
+                    'extract': extract,
+                    'url': url,
+                    'response': response,
+                    'user': usertext
+                    })

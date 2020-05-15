@@ -3,6 +3,7 @@ from . import tchatbotapp
 from .utils import Parser, GoogleApi, WikiApi, Grandpy
 
 
+
 class Front:
     """class contains all methods to display the data to the front"""
 

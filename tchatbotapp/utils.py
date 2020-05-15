@@ -2,6 +2,7 @@ import re
 import unicodedata
 import requests
 from random import choice
+import os
 
 import config
 
@@ -52,7 +53,7 @@ class GoogleApi:
     def position(self):
         """method find the correct position with geocoding google api"""
 
-        payload = {'address': self.user_query, 'key': config.API_KEY}
+        payload = {'address': self.user_query, 'key': os.environ.get('API_KEY_BACK'}
         result = requests.get(
             'https://maps.googleapis.com/maps/api/geocode/json',
             params=payload)

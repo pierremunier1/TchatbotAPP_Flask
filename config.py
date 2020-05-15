@@ -12,5 +12,6 @@ LISTNOREPLY = ("Je n'ai pas compris peux tu répeter la question?.... ",
 LISTREPLY = ("Bien sûr mon poussin ! La voici :",
              "Evidemment que je connais cet adresse ! La voici :...")
 
-API_KEY = os.environ["API_KEY"]
+API_KEY = os.environ.get["API_KEY"]
 
+print(API_KEY)

@@ -14,4 +14,4 @@ LISTREPLY = ("Bien sûr mon poussin ! La voici :",
 
 API_KEY = os.environ.get("API_KEY")
 
-print(API_KEY)
+print(process.env.API_KEY)

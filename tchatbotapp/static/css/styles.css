@@ -38,13 +38,44 @@ body {
 
 }
 
-#donut{
+#donut
+
+{
 
   width: 80px;
   height: 80px;
 
 }
 
+@media all and (max-width: 1024px)
+
+{
+  .title1{
+
+    font-size:25pt;
+    font-family: monospace;
+    color: white;
+
+  }
+
+  .title2{
+
+    font-size:25pt;
+    font-family: monospace;
+    color:white;
+
+  }
+
+  #donut
+  
+  {
+
+    width: 45px;
+    height: 45px;
+
+  }
+
+}
 /* section */
 
 section{
@@ -57,7 +88,21 @@ section{
   
 }
 
+@media all and (max-width: 1024px)
 
+{
+
+  section{
+
+    display: flex;
+    max-height: 900px;
+    flex-direction:column;
+    justify-content: normal;
+    align-items: center;
+    
+  }
+
+}
 .grandpy{
 
   display: flex;
@@ -69,7 +114,7 @@ section{
 {
   .grandpy
   {
-    visibility: hidden;;
+    display: none;
   }
 }
 
@@ -182,7 +227,7 @@ section div {
   display: flex;
   width: 350px;
   height: 80px;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: auto;
@@ -229,6 +274,22 @@ button{
   justify-content: right;
   align-items: center;
   
+}
+
+@media all and (max-width: 1024px)
+
+{
+
+  .footer{
+
+    display: flex;
+    max-height: 40px;
+    flex-direction:column;
+    justify-content: right;
+    align-items: center;
+    
+  }
+
 }
 
 #author{

@@ -1,6 +1,6 @@
 from flask import render_template, jsonify, request
 from . import tchatbotapp
-from .utils import Parser, GoogleApi, WikiApi, Grandpy,Grandpy_result
+from .utils import Parser, GoogleApi, WikiApi, Grandpy, Response
 import os
 
 
@@ -15,7 +15,7 @@ def ajax():
     """analyse the text entered in the user input"""
 
     usertext = request.form["usertext"]
-    user_text = Grandpy_result.reply(usertext)
+    user_text = Response.response_front(usertext)
     
     return jsonify(user_text)
                     

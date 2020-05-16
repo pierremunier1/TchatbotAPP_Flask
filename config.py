@@ -7,9 +7,11 @@ STOPWORDS = ["a", "abord", "absolument", "afin", "ah", "ai", "aie", "ailleurs", 
 
 LISTNOREPLY = ("Je n'ai pas compris peux tu répeter la question?.... ",
                 "As-tu un problème de clavier?...    ",
+                "Je vais commencer à m'enerver...",
                 "Hmmm, je n'ai toujours pas compris je me fais vieux..")
 
-LISTREPLY = ("Bien sûr mon poussin ! La voici :",
-             "Evidemment que je connais cet adresse ! La voici :...")
+LISTREPLY = ("Hmm, bien sûr mon poussin ! Je pense que c'est ici :",
+             "Evidemment que je connais cet endroit! C'est situé ici :...",
+             "Dans mes souvenir je crois que c'est ici")
 
 API_KEY = os.environ.get("API_KEY")

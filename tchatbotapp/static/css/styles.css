@@ -68,7 +68,7 @@ section{
 
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 400px;
   height: 550px;
   
 }
@@ -81,11 +81,12 @@ section{
   height: 500px;
   margin: auto;
   overflow-y: scroll;
+  overflow-x: hidden;
 
 }
 
 section div {
-  max-width: 350px;
+  max-width: 400px;
   word-wrap: break-word;
   margin-bottom: 10px;
   line-height: 24px;

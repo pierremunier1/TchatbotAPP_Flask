@@ -65,7 +65,7 @@ function inputForm() {
           
           if (query["globalAddress"] !='') {
             let newDiv_2 = document.createElement("imessages");
-            newDiv_2.innerHTML = query["extract"]+(
+            newDiv_2.innerHTML = ["Voici un article lié à ce lieu..."]+query["extract"]+(
               '<a href="'+query["url"]+'">-En savoir plus sur Wikipedia.</a>'
             );
             newDiv_2.className = "from-them";

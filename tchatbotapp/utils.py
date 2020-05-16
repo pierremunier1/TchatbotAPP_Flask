@@ -106,7 +106,7 @@ class WikiApi:
                        'action': 'query',
                        'prop': 'extracts|info',
                        'inprop': 'url',
-                       'exchars': 600,
+                       'exchars': 300,
                        'explaintext': 1,
                        'pageids': pageid}
 
@@ -137,9 +137,10 @@ class Grandpy:
         noanswer = choice(config.LISTNOREPLY)
         return noanswer
 
-class Grandpy_result:
+class Response:
+    """return full response to the front-end"""
 
-    def reply(usertext):
+    def response_front(usertext):
 
         analyse = Parser(usertext)
         userQuery = analyse.parse()
@@ -169,7 +170,7 @@ class Grandpy_result:
         result = {'lat':latitude,
                   'lng':longitude,
                   'globalAddress':globalAddress,
-                  'user':user,
+                  'user':usertext,
                   'extract':extract,
                   'url':url,
                   'response':response}

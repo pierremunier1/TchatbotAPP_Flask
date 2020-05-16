@@ -57,11 +57,20 @@ section{
   
 }
 
+
 .grandpy{
 
   display: flex;
   width: 350px;
   height: 350px;
+}
+
+@media all and (max-width: 1024px)
+{
+  .grandpy
+  {
+    visibility: hidden;;
+  }
 }
 
 .tchatbox{

@@ -38,7 +38,7 @@ function inputForm() {
         })
       .then(response => response.json())
 
-      .then(function (json) {
+      .then(function (json) {console.log
           let query ={ 
               lng:json["lng"],
               lat:json["lat"],

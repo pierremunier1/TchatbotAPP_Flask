@@ -17,4 +17,5 @@ def ajax():
     usertext = request.form["usertext"]
     user_text = Response.response_front(usertext)
 
+
     return jsonify(user_text)

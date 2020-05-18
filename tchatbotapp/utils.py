@@ -20,7 +20,7 @@ class Parser:
 
         # switch to lower case
         self.analyse = self.analyse.lower()
-
+       
         # remove accent
         self.analyse = ''.join((c for c in unicodedata.normalize
                                 ('NFD', self.analyse)
@@ -76,6 +76,7 @@ class GoogleApi:
             return self.latitude, self.longitude, self.global_address
 
 
+
 class WikiApi:
     """class contain all methods to retreive data from mediawiki api"""
 
@@ -88,12 +89,12 @@ class WikiApi:
     def get_wiki(self):
         """get wikipedia articles from mediawiki api in two step"""
 
-        geo = '{}|{}'.format(self.latitude, self.longitude)
-
+        geo = '{}|{}'.format(self.latitude,self.longitude)
+        
         payload = {'format': 'json',
                    'action': 'query',
                    'list': 'geosearch',
-                   'gsradius': 50,
+                   'gsradius': 200,
                    'gscoord': geo}
 
         result = requests.get(
@@ -174,6 +175,7 @@ class Response:
             extract = ''
             url = ''
             response = Grandpy.reply_noanswer()
+            
 
         result = {'lat': latitude,
                   'lng': longitude,

@@ -145,16 +145,19 @@ class TestResponse:
     def test_response_front(self):
 
         response = Grandpy.reply_noanswer()
+
+        usertext = 'troyes'
+        
     
-        result = {'lat': '',
+        result = {'lat':'',
                   'lng': '', 
                   'globalAddress':'', 
-                  'user':'',
+                  'user':usertext,
                    'extract': '', 
                    'url': '', 
                    'response':response}
 
-        assert response in config.LISTNOREPLY == response
+        assert Response.response_front(usertext) == result
         
 
  

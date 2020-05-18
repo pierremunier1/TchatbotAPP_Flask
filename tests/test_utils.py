@@ -135,29 +135,3 @@ class TestGrandPy:
         noanswer = Grandpy.reply_noanswer()
         assert noanswer in config.LISTNOREPLY
 
-
-############################################################
-
-
-class TestResponse:
-    
-
-    def test_response_front(self):
-
-        response = Grandpy.reply_noanswer()
-
-        usertext = 'troyes'
-        
-    
-        result = {'lat':'',
-                  'lng': '', 
-                  'globalAddress':'', 
-                  'user':usertext,
-                   'extract': '', 
-                   'url': '', 
-                   'response':response}
-
-        assert Response.response_front(usertext) == result
-        
-
- 

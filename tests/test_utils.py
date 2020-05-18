@@ -144,7 +144,7 @@ class TestResponse:
 
     def test_response_front(self):
 
-        response = config.LISTNOREPLY
+        response = Grandpy.reply_noanswer()
     
         result = {'lat': '',
                   'lng': '', 
@@ -154,10 +154,7 @@ class TestResponse:
                    'url': '', 
                    'response':response}
 
-        with patch('random.choice', return_value=3) as mock_random:
-            choice = Grandpy.reply_noanswer()
-            assert choice == 3
-
-        assert Response.response_front(usertext) == result
+        assert response in config.LISTNOREPLY == response
+        
 
  

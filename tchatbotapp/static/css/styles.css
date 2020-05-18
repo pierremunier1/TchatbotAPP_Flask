@@ -326,8 +326,8 @@ and (orientation : portrait)
 
     display: flex;
     visibility: hidden;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     margin: auto;
     
   }
@@ -337,8 +337,8 @@ and (orientation : portrait)
   {
 
     border: 2px solid rgb(68, 87, 100);
-    width: 280px;
-    height: 280px;
+    width: 250px;
+    height: 250px;
 
   }
 

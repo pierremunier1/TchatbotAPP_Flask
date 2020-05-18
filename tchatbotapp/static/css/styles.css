@@ -223,7 +223,7 @@ and (orientation : portrait)
     font-size: 10pt;
     font-family: monospace;
     width: 330px;
-    height: 400px;
+    height: 380px;
     margin: auto;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -326,8 +326,8 @@ and (orientation : portrait)
 
     display: flex;
     visibility: hidden;
-    width: 210px;
-    height: 210px;
+    width: 230px;
+    height: 230px;
     margin: auto;
     
   }
@@ -337,8 +337,8 @@ and (orientation : portrait)
   {
 
     border: 2px solid rgb(68, 87, 100);
-    width: 210px;
-    height: 210px;
+    width: 230px;
+    height: 230px;
 
   }
 

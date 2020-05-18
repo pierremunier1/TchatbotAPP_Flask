@@ -1,5 +1,8 @@
 import config
-from tchatbotapp.utils import Parser, GoogleApi, WikiApi, Grandpy
+from tchatbotapp.utils import Parser, GoogleApi, WikiApi, Grandpy, Response
+
+from random import choice
+import unittest
 
 
 class TestParser:
@@ -117,17 +120,44 @@ def test_get_wiki(monkeypatch):
 ############################################################
 
 
-class test_GrandPy:
+class TestGrandPy:
     """test reply of the grandpy function"""
 
     def test_reply(self):
         """test if the reply is selected"""
-        result = config.LISTREPLY
-        self.grandpy = Grandpy.reply()
-        assert self.grandpy() == result
+
+        answer = Grandpy.reply()
+        assert answer in config.LISTREPLY 
 
     def test_reply_noanswer(self):
         """test if the 'no reply' is selected"""
-        result = config.LISTNOREPLY
-        self.grandpy = Grandpy.reply()
-        assert self.grandpy() == result
+       
+        noanswer = Grandpy.reply_noanswer()
+        assert noanswer in config.LISTNOREPLY
+
+
+############################################################
+
+
+class TestResponse:
+    
+
+    def test_response_front(self):
+
+        response = config.LISTNOREPLY
+    
+        result = {'lat': '',
+                  'lng': '', 
+                  'globalAddress':'', 
+                  'user':'',
+                   'extract': '', 
+                   'url': '', 
+                   'response':response}
+
+        with patch('random.choice', return_value=3) as mock_random:
+            choice = Grandpy.reply_noanswer()
+            assert choice == 3
+
+        assert Response.response_front(usertext) == result
+
+ 

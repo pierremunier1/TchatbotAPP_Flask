@@ -53,7 +53,9 @@ class GoogleApi:
     def position(self):
         """method find the correct position with geocoding google api"""
 
-        payload = {'address': self.user_query, 'key': os.environ.get('API_KEY_BACK')}
+        payload = {
+            'address': self.user_query,
+            'key': os.environ.get('API_KEY_BACK')}
         result = requests.get(
             'https://maps.googleapis.com/maps/api/geocode/json',
             params=payload)
@@ -61,13 +63,17 @@ class GoogleApi:
         status = google_maps['status']
 
         if status == 'OK':
-            self.latitude = google_maps['results'][0]['geometry']['location']['lat']
-            self.longitude = google_maps['results'][0]['geometry']['location']['lng']
-            self.global_address = google_maps['results'][0]['formatted_address']
-            return self.latitude, self.longitude, self.global_address
+            self.latitude = (
+                google_maps['results'][0]['geometry']['location']['lat']
+                )
+            self.longitude = (
+                google_maps['results'][0]['geometry']['location']['lng']
+                )
+            self.global_address = (
+                google_maps['results'][0]['formatted_address']
+                )
 
-        elif status == 'ZERO_RESULTS':
-            print("Adresse non trouvée")
+            return self.latitude, self.longitude, self.global_address
 
 
 class WikiApi:
@@ -126,29 +132,33 @@ class Grandpy:
     """give a random response"""
 
     def reply():
-        """when the place is correct, give an response"""
+        """when the place is correct,
+             give an response"""
 
         answer = choice(config.LISTREPLY)
         return answer
 
     def reply_noanswer():
-        """when the place is incorrect, give an random response"""
+        """when the place is incorrect,
+            give an random response"""
 
         noanswer = choice(config.LISTNOREPLY)
         return noanswer
 
+
 class Response:
-    """return full response to the front-end"""
+    """analyse and return response"""
 
     def response_front(usertext):
+        """return response to the front-end"""
 
         analyse = Parser(usertext)
         userQuery = analyse.parse()
         query = GoogleApi(userQuery)
         userQuery = query.position()
+        addressCoords = query.position()
 
         try:
-            addressCoords = query.position()
             latitude = addressCoords[0]
             longitude = addressCoords[1]
             globalAddress = addressCoords[2]
@@ -156,23 +166,21 @@ class Response:
             extract = coords.get_wiki()[0]
             url = coords.get_wiki()[1]
             response = Grandpy.reply()
-            user = usertext
 
         except BaseException:
             latitude = ''
             longitude = ''
             globalAddress = ''
-            user = ''
             extract = ''
             url = ''
             response = Grandpy.reply_noanswer()
 
-        result = {'lat':latitude,
-                  'lng':longitude,
-                  'globalAddress':globalAddress,
-                  'user':usertext,
-                  'extract':extract,
-                  'url':url,
-                  'response':response}
+        result = {'lat': latitude,
+                  'lng': longitude,
+                  'globalAddress': globalAddress,
+                  'user': usertext,
+                  'extract': extract,
+                  'url': url,
+                  'response': response}
         
         return result

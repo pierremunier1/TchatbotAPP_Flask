@@ -6,6 +6,8 @@ body {
     height: 100%
 }
 
+/* media queries smartphones - body */
+
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) 
@@ -61,6 +63,8 @@ and (orientation : portrait)
 
 }
 
+/* media queries smartphones - titles */
+
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) 
@@ -105,6 +109,8 @@ section{
   
 }
 
+/* media queries smartphones - section */
+
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) 
@@ -114,16 +120,21 @@ and (orientation : portrait)
   section{
 
     display: flex;
-    max-height: 600px;
+    max-height: 700px;
     max-width: 375px;
     flex-direction:column;
     justify-content:flex-start;
     align-content: center;
     align-items: center;
+    margin: auto;
+    
     
   }
 
 }
+
+/* media queries tablettes - section */
+
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px)
@@ -151,6 +162,8 @@ and (-webkit-min-device-pixel-ratio: 2)
   height: 350px;
 }
 
+/* media queries smartphones - grandpy */
+
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) 
@@ -161,6 +174,8 @@ and (orientation : portrait)
     display: none;
   }
 }
+
+/* media queries tablettes - grandpy */
 
 @media only screen 
 and (min-device-width : 768px) 
@@ -193,6 +208,27 @@ and (-webkit-min-device-pixel-ratio: 2)
   overflow-y: scroll;
   overflow-x: hidden;
 
+}
+
+/* media queries smartphones - imessages */
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) 
+and (orientation : portrait)
+{
+  .imessages
+  {
+
+    font-size: 10pt;
+    font-family: monospace;
+    width: 330px;
+    height: 400px;
+    margin: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+  }
 }
 
 section div {
@@ -257,6 +293,7 @@ section div {
   height: 20px;
   
 }
+
 .map_google{
 
   display: flex;
@@ -274,7 +311,41 @@ section div {
 
 }
 
-/* section2 */
+
+/* media queries smartphones - map */
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) 
+and (orientation : portrait)
+
+{
+
+  .map_google
+  {
+
+    display: flex;
+    visibility: hidden;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    
+  }
+
+  .map
+  
+  {
+
+    border: 2px solid rgb(68, 87, 100);
+    width: 280px;
+    height: 280px;
+
+  }
+
+
+}
+
+/* section2  - user input*/
 
 .user{
 
@@ -330,6 +401,8 @@ button{
   
 }
 
+/* media queries smartphones - footer */
+
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) 
@@ -348,6 +421,8 @@ and (orientation : portrait)
   }
 
 }
+
+/* media queries tablettes - footer */
 
 @media only screen 
 and (min-device-width : 768px) 

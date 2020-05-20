@@ -74,7 +74,7 @@ class GoogleApi:
                 )
 
             return self.latitude, self.longitude, self.global_address
-
+        return '','',''
 
 
 class WikiApi:
@@ -127,7 +127,7 @@ class WikiApi:
             extract = extract_wiki['query']['pages'][str(pageid)]['extract']
 
             return extract, url
-
+        return '',''
 
 class Grandpy:
     """give a random response"""
@@ -156,19 +156,24 @@ class Response:
         analyse = Parser(usertext)
         userQuery = analyse.parse()
         query = GoogleApi(userQuery)
-        userQuery = query.position()
-        addressCoords = query.position()
 
         try:
-            latitude = addressCoords[0]
-            longitude = addressCoords[1]
-            globalAddress = addressCoords[2]
-            coords = WikiApi(latitude, longitude)
-            extract = coords.get_wiki()[0]
-            url = coords.get_wiki()[1]
-            response = Grandpy.reply()
+            googleapi = requests.get('https://maps.googleapis.com/maps/api/geocode/json')
+        except requests.exceptions.ConnectionError:
+            print("Unable to access Google API")    
 
-        except BaseException:
+        try:
+            mediawiki = requests.get('https://fr.wikipedia.org/w/api.php')
+        except requests.exceptions.ConnectionError:
+            print("Unable to access MediaWiki API")    
+
+        try:
+            latitude,longitude,globalAddress = query.position()
+            coords = WikiApi(latitude, longitude)
+            extract,url = coords.get_wiki()
+            response = Grandpy.reply()
+            
+        except:
             latitude = ''
             longitude = ''
             globalAddress = ''

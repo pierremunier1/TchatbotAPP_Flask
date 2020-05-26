@@ -7,7 +7,7 @@ import os
 @tchatbotapp.route('/')
 def index():
     """display the data to the front"""
-    return render_template('index copy.html', API_KEY=os.environ.get('API_KEY'))
+    return render_template('index.html', API_KEY=os.environ.get('API_KEY'))
 
 
 @tchatbotapp.route("/ajax", methods=["POST"])

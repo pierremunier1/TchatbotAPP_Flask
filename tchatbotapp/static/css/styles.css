@@ -6,32 +6,28 @@ body {
     height: 100%
 }
 
-/* media queries smartphones - body */
-
 @media only screen 
 and (min-device-width : 375px) 
-and (max-device-width : 667px) 
+and (max-device-height : 667px) 
 and (orientation : portrait)
 
 {
 
   body {
-    padding: 0;
-    margin: 0;
-    background: hsl(210, 14%, 53%);
-    max-height: 100%;
+      padding: 0;
+      margin: 0;
+      background: hsl(210, 14%, 53%);
+      height: 667px;
+      width: 375px;
   }
 
 }
-/* header */
-
-
 .cont_title {
 
   display: flex;
   height: 80px;
   flex-direction: row;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   align-content: center;
   margin-left: 10px;
@@ -67,7 +63,7 @@ and (orientation : portrait)
 
 @media only screen 
 and (min-device-width : 375px) 
-and (max-device-width : 667px) 
+and (max-device-height : 667px)  
 and (orientation : portrait)
 
 {
@@ -99,65 +95,38 @@ and (orientation : portrait)
 }
 /* section */
 
-section{
-
-  display: flex;
-  max-height: 550px;
-  flex-direction:row;
-  justify-content: space-around;
-  align-items: center;
-  
-}
-
-/* media queries smartphones - section */
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 0px;
+    grid-auto-rows: minmax(100px, auto);
+    height: 600px;
+  }
 
 @media only screen 
 and (min-device-width : 375px) 
-and (max-device-width : 667px) 
+and (max-device-height : 667px)  
 and (orientation : portrait)
 {
 
-  section{
-
-    display: flex;
-    max-height: 700px;
-    max-width: 375px;
-    flex-direction:column;
-    justify-content:flex-start;
-    align-content: center;
-    align-items: center;
-    margin: auto;
-    
-    
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap: 0px;
+    height: 400px;
+    width: 365px;
+ 
   }
-
 }
 
-/* media queries tablettes - section */
-
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px)
-and (-webkit-min-device-pixel-ratio: 2)
-
-{
-
-  section{
-
-    display: flex;
-    max-height: 600px;
-    max-width: 1024px;
-    flex-direction:column;
-    justify-content:flex-start;
-    align-content: center;
-    align-items: center; 
-  }
-
-}
 
 .grandpy{
 
-  display: flex;
+  display: grid;
+  align-self: center;
+  justify-self: center;
   width: 350px;
   height: 350px;
 }
@@ -166,7 +135,7 @@ and (-webkit-min-device-pixel-ratio: 2)
 
 @media only screen 
 and (min-device-width : 375px) 
-and (max-device-width : 667px) 
+and (max-device-height : 667px)  
 and (orientation : portrait)
 {
   .grandpy
@@ -191,26 +160,32 @@ and (-webkit-min-device-pixel-ratio: 2)
 
 .tchatbox{
 
-  display: flex;
-  flex-direction: column;
-  width: 400px;
+  display: grid;
+  justify-self: center;
+  align-self: center;
+  grid-column: 2;
+  grid-row: 1;
+  width: 350px;
   height: 500px;
   
 }
 
 @media only screen 
 and (min-device-width : 375px) 
-and (max-device-width : 667px)
+and (max-device-height : 667px) 
 and (-webkit-min-device-pixel-ratio: 2)
 
 {
   .tchatbox
   {
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  align-self: center;
+  justify-self: self-start;
+  grid-column: 1;
+  grid-row: 3;
   width: 400px;
-  height: 390px;
+  height: 350px;
   
   }
 }
@@ -220,8 +195,9 @@ and (-webkit-min-device-pixel-ratio: 2)
 
   font-size: 10pt;
   font-family: monospace;
+  align-self: center;
   width: 330px;
-  height: 500px;
+  height: 350px;
   margin: auto;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -232,7 +208,7 @@ and (-webkit-min-device-pixel-ratio: 2)
 
 @media only screen 
 and (min-device-width : 375px) 
-and (max-device-width : 667px) 
+and (max-device-height : 667px) 
 and (orientation : portrait)
 {
   .imessages
@@ -241,7 +217,7 @@ and (orientation : portrait)
     font-size: 10pt;
     font-family: monospace;
     width: 330px;
-    height: 380px;
+    height: 320px;
     margin: auto;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -314,8 +290,10 @@ section div {
 
 .map_google{
 
-  display: flex;
+  display: grid;
   visibility: hidden;
+  align-self: center;
+  justify-self: center;
   width: 350px;
   height: 350px;
   
@@ -334,7 +312,7 @@ section div {
 
 @media only screen 
 and (min-device-width : 375px) 
-and (max-device-width : 667px) 
+and (max-device-height : 667px)  
 and (orientation : portrait)
 
 {
@@ -342,11 +320,12 @@ and (orientation : portrait)
   .map_google
   {
 
-    display: flex;
+    display: grid;
+    width: 350px;
+    height: 200px;
+    grid-row: 6;
     visibility: hidden;
-    width: 230px;
-    height: 230px;
-    margin: auto;
+    
     
   }
 
@@ -355,8 +334,8 @@ and (orientation : portrait)
   {
 
     border: 2px solid rgb(68, 87, 100);
-    width: 230px;
-    height: 230px;
+    width: 350px;
+    height: 200px;
 
   }
 
@@ -365,12 +344,15 @@ and (orientation : portrait)
 
 /* section2  - user input*/
 
+
+
 .user{
 
-  display: flex;
-  width: 350px;
+  display: grid;
+  grid-column: 2;
+  grid-row: 2;
+  width: 300px;
   height: 80px;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: auto;
@@ -379,7 +361,7 @@ and (orientation : portrait)
 
 form{
 
-    width: 350px;
+    width: 300px;
     height: 50px;
     background: white;
     box-sizing: border-box;
@@ -390,7 +372,7 @@ form{
 
 input{
     
-    width: 350px;
+    width: 300px;
     height: 50px;
     line-height: 30px;
     outline: 0;
@@ -406,6 +388,29 @@ button{
     display: none;
 }
 
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-height : 667px) 
+and (orientation : portrait)
+
+{
+
+  .user{
+
+    display: grid;
+    width: 300px;
+    height: 80px;
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: center;
+
+
+  
+  }
+
+}
+
 /* footer*/
 
 
@@ -419,26 +424,7 @@ button{
   
 }
 
-/* media queries smartphones - footer */
 
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px) 
-and (orientation : portrait)
-
-{
-
-  .footer{
-
-    display: flex;
-    max-height: 40px;
-    flex-direction:column;
-    justify-content: right;
-    align-items: center;
-    
-  }
-
-}
 
 /* media queries tablettes - footer */
 
@@ -461,6 +447,30 @@ and (-webkit-min-device-pixel-ratio: 2)
 
 
 }
+
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px)
+and (orientation : portrait)
+
+{
+
+  .footer{
+
+    display: none;
+    max-height: 40px;
+    flex-direction:column;
+    justify-content: space-around;
+    
+    
+  }
+
+  
+
+
+}
+
 
 #author{
 

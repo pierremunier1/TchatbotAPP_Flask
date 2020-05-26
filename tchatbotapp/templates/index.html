@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<body>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/brouillon.css') }}">
       <script src="{{ url_for('static', filename='js/index.js') }}"></script>
       <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/donut.png') }}" />
     <title>#Dismoitout!</title>
 </head>
-<body>
+
 
 <!--title-->
 
@@ -24,8 +27,7 @@
 </header>
 
 <!--section-->
-
-<section class="center">
+<div class="wrapper">
 
 <div class = grandpy>
     <img src="{{ url_for('static', filename='images/grandpy1.png') }}" alt="Grandpy" id="grandpy1">
@@ -36,8 +38,6 @@
 <div class="map_google">
 <div id="map" class = "map"></div>
 </div>
-
- </section> 
 
 <!--input function-->
 
@@ -50,7 +50,7 @@
     <button type="submit" id="submit"></button>
   </form> 
   </div>
-
+</div>
 <!--initialize function-->
 
 <script>inputForm();</script>
@@ -68,6 +68,6 @@
 
 
 </footer>
-
+</div>
 </body>
 </html>
